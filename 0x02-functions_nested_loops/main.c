@@ -1,11 +1,15 @@
 #include "main.h"
 
-void print_alphabet(void)
+/**
+ * main - prints all the alphabets
+ *
+ * Return: Always 0 (Success)
+ */
+
+int main(void)
 {
-	int i;
+	print_alphabet();
 	
-	for (i = 97; i < 122; i++){
-		_putchar(i);
-	}
-	_putchar('\n');
+	return (0);
 }
+
