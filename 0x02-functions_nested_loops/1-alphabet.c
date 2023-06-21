@@ -1,6 +1,4 @@
-#include  <stdio.h>
-
-char print_alphabet(char c);
+#include "main.h"
 
 /**
  * main - prints all the alphabets
@@ -10,28 +8,8 @@ char print_alphabet(char c);
 
 int main(void)
 {
-	int i;
-
-	for (i = 97; i < 122; i++)
-	{
-		print_alphabet(i);
-	}
-	putchar('\n');
-
+	print_alphabet();
+	
 	return (0);
 }
 
-/**
- * print_alphabet - Entry point
- *
- * Description: 'Prints all the lowercase letters'
- * @c: defines where the characters should start from
- *
- * Return: Always c (Success)
- */
-
-char print_alphabet(char c)
-{
-	putchar(c);
-	return (c);
-}
