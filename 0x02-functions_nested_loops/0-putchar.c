@@ -1,4 +1,4 @@
-# include <stdio.h>
+#include "main.h"
 /**
  * main - print _putchar with c
  *
@@ -8,11 +8,11 @@ int main(void)
 {
 	char str[] = "_putchar";
 	int i;
-
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		putchar(str[i]);
+	
+	for (i = 0; str[i] != '\0'; i++){
+		_putchar(str[i]);
 	}
-	putchar('\n');
+	_putchar('\n');
+	
 	return (0);
 }
