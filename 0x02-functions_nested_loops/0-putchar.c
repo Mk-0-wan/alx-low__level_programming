@@ -4,22 +4,15 @@
  *
  * Return: Always 0 (Success)
  */
-
-char _putchar(char c)
-
 int main(void)
 {
-	char str[] = "Hello world";
+	char str[] = "_putchar";
 	int i;
-	
-	for (i = 0; str[i] != "\0"; i++)
+
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		_putchar(str[i]);
+		putchar(str[i]);
 	}
+	putchar('\n');
 	return (0);
 }
-char _putchar(char c)
-{
-	putchar(c);
-	return c;
-} 
