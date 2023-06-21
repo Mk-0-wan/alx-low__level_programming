@@ -1,7 +1,12 @@
 #include "main.h"
 
-void print_alphabet(void)
-{
+/**
+ * print_alphabet - prints all the alphabets
+ *
+ * Return: Always void (Success)
+ */
+void print_alphabet(void){
+	
 	int i;
 	
 	for (i = 97; i < 122; i++){
@@ -9,3 +14,4 @@ void print_alphabet(void)
 	}
 	_putchar('\n');
 }
+
