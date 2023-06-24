@@ -6,20 +6,23 @@
  *
  * @num1: used to store the digits passed in as the argument for conversion
  *
- * Return: void returns only the functions which i have defined inside the return statement
+ * Return: void returns the results
+ *
  */
 int print_last_digit(int num1)
 {
 	int x;
-	
-	if (num1 < 0){
+
+	if (num1 < 0)
+	{
 		x = (abs(num1) % 10);
 		_putchar(x + '0');
 		return (x);
 	}
-	else{
+	else
+	{
 		x = num1 % 10;
 		_putchar(x + '0');
-		return x;
+		return (x);
 	}
 }
