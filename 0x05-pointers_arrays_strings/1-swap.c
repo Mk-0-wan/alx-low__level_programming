@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * swap - swapping values btwn ints
+ * swap_int - swapping values btwn ints
  * @a: first param for variable one
  * @b: second param ofr variable two
  * Return: void
