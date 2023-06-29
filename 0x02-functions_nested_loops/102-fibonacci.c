@@ -13,6 +13,7 @@ int main(void)
 	a = 1;
 	b = 2;
 	printf("%ld, %ld", a, b);
+
 	for (k = 0; k <= 50; k++)
 	{
 		c = a + b;
@@ -21,4 +22,5 @@ int main(void)
 		b = c;
 	}
 	printf("\n");
+	return (0);
 }
