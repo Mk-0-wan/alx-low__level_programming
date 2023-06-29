@@ -16,7 +16,7 @@ void times_table(void)
 		{
 			prod = x * mul;
 			_putchar(44);
-			_putchar(32);
+		_putchar(32);
 			if (prod <= 9)
 			{
 				_putchar(32);
