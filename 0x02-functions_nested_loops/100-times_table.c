@@ -23,7 +23,6 @@ void print_times_table(int n)
 				if (value <= 9)
 				{
 					_putchar(32);
-					_putchar(32);
 					_putchar(value + 48);
 				}
 				else if (value <= 99)
