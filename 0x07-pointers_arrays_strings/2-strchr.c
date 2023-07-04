@@ -5,7 +5,7 @@
  * @c:char to be on the look for
  * Return: Always 0 (Success)
  */
-char *_strchr(char *s, char c);
+char *_strchr(char *s, char c)
 {
 	int i;
 	
