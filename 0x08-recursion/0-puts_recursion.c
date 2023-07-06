@@ -1,4 +1,4 @@
-#inlcude "main.h"
+#include "main.h"
 /**
  * _puts_recursion - a recursive function
  * accepting the arrguments
@@ -13,6 +13,6 @@ void _puts_recursion(char *s)
 
 	if (s[i] != '\0')
 	{
-		_print_recursion(s[i]);
+		_puts_recursion(s[i]);
 	}
 }
