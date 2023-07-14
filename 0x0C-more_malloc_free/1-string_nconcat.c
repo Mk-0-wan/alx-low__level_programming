@@ -1,5 +1,5 @@
-#include <stdlib.h>
 #include "main.h"
+#include <stdlib.h>
 /**
  * string_nconcat - allocation of memory of two strings appended
  * @s1: pointer to the first value (dest)
@@ -7,9 +7,10 @@
  * @n: keeps the number of chars to be appended over to dest
  * Return: a pointer with an allocated memory for the string value
  */
-char *string_nconcat(char *s1, char *s2, unsigned int n);
+char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *result;
+	char *pointer;
 	unsigned int i_len = 0, j_len = 0;
 
 	while (s1 && s1[i_len])
@@ -22,12 +23,12 @@ char *string_nconcat(char *s1, char *s2, unsigned int n);
 	{
 		n = j_len;
 	}
-	result = malloc(dest_len + n + 1);
+	result = malloc(i_len + n + 1);
 
 	if (!result)
 		return (NULL);
 
-	char *pointer = result;
+	pointer = result;
 
 	while (*s1 != '\0')
 	{
@@ -36,11 +37,11 @@ char *string_nconcat(char *s1, char *s2, unsigned int n);
 		s1++;
 	}
 
-	while (*s2 = '\0' && n > 0)
+	while ((*s2 != '\0') && n > 0)
 	{
 		*pointer = *s2;
-		pointer++
-		s2++
+		pointer++;
+		s2++;
 		n--;
 	}
 
