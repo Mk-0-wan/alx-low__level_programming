@@ -5,5 +5,5 @@
 #include <stdio.h>
 #include <limits.h>
 
-void *malloc_checker(unsigned int b);
+void *malloc_checked(unsigned int b);
 #endif
