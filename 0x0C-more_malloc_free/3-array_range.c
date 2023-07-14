@@ -25,9 +25,9 @@ int *array_range(int min, int max)
 		return (NULL);
 	}
 	/*looping over the new array starting over at the min value to max value*/
-	for (i = 0; min <= max; i++)
+	for (index = 0; min <= max; index++)
 	{
-		s[i] = min++;
+		s[index] = min++;
 	}
 	/*note we are only adding one to each element in the array from the min*/
 	return (s);
