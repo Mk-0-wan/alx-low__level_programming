@@ -51,3 +51,4 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	_memeset(s, 0, nmemb * size);
 
 	return (s);
+}
