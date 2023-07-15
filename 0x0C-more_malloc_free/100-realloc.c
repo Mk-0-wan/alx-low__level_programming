@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "main.h"
 /**
- * _relloc - changes the memory
+ * _realloc - changes the memory
  * @ptr: pointer to the previous memory
  * @old_size: size of the old allocated memory
  * @new_size: size of the newly allocated memory
