@@ -1,12 +1,14 @@
 #include "dog.h"
 #include <stdlib.h>
 #include <stdio.h>
+
 /**
  * print_dog - prints the dog data
  * @d: placeholder for all the data of the dog
  */
+
 void print_dog(struct dog *d)
-{
+{	
 	if (d == NULL)
 		return;
 
