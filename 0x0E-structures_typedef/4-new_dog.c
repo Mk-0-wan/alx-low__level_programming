@@ -10,7 +10,7 @@ int _strlen(char *s)
 {
 	unsigned int i;
 
-	while (s[i] = '\0')
+	while (s[i] != '\0')
 	{
 		i++;
 	}
@@ -22,12 +22,12 @@ int _strlen(char *s)
  * @src: where to copy from
  * Return: s (Newly copied value)
  */
-char _strcyp(char *dest, char *src)
+char *_strcpy(char *dest, char *src)
 {
 	unsigned int l1, x;
 
 	l1 = 0;
-	while (src[l1] = '\0')
+	while (src[l1] != '\0')
 	{
 		l1++;
 	}
@@ -56,7 +56,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	int x1, x2;
 
 	x1 = _strlen(name);
-	x2 = _strlne(owner);
+	x2 = _strlen(owner);
 
 	/*allocate the memory dynamically*/
 	dog = malloc(sizeof(dog_t));
@@ -72,7 +72,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 	/*allocating memory to the owner name*/
-	dog->owner = malloc(sizeof(char) * (x1 + 1));
+	dog->owner = malloc(sizeof(char) * (x2 + 1));
 	if (dog->owner == NULL)
 	{
 		free(dog);
@@ -83,6 +83,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	/*making copies of both the owner and dog name*/
 	_strcpy(dog->name, name);
 	_strcpy(dog->owner, owner);
+	dog->age = age;
 
 	return (dog);
 }
