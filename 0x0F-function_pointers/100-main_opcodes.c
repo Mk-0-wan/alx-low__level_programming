@@ -8,7 +8,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int bytes i;
+	int size, i;
 	char *arr;
 
 	if (argc != 2)
@@ -17,9 +17,9 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	bytes = atoi(argv[1]);
+	size = atoi(argv[1]);
 
-	if (bytes < 0)
+	if (size < 0)
 	{
 		printf("Error\n");
 		exit(2);
@@ -27,14 +27,15 @@ int main(int argc, char *argv[])
 
 	arr = (char *)main;
 
-	for (i = 0; i < bytes; i++)
+	for (i = 0; i < size; i++)
 	{
-		if (i == bytes -1)
+		if (i == size - 1)
 		{
 			printf("%02hhx\n", arr[i]);
 			break;
 		}
-		printf("%02hhx", arr[i]);
+		printf("%02hhx ", arr[i]);
 	}
 	return (0);
 }
+
