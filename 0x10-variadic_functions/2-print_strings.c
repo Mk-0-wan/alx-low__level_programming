@@ -12,23 +12,27 @@ void print_strings(char *separator, const unsigned int n, ...)
 	unsigned int i;
 	char *str;
 
-	va_start(ap, n);
-	/*start from the first argument*/
-	for (i = 1; i <= n; i++)
+	/*number of integers can never be less than zero*/
+	if (n > 0)
 	{
-		/*store the strings in a pointer*/
-		str = va_arg(ap, char*);
-		/*check if the pointer is empty*/
-		if (str == NULL)
-			printf("nil");
-		else
-			printf("%s", str);
-		/*add separator*/
-		if (separator != NULL && i != n)
+		va_start(ap, n);
+		/*start from the first argument*/
+		for (i = 1; i <= n; i++)
 		{
-			printf("%s", separator);
+			/*store the strings in a pointer*/
+			str = va_arg(ap, char*);
+			/*check if the pointer is empty*/
+			if (str == NULL)
+				printf("nil");
+			else
+				printf("%s", str);
+			/*add separator*/
+			if (separator != NULL && i != n)
+			{
+				printf("%s", separator);
+			}
 		}
+		va_end(ap);
 	}
-	va_end(ap);
 	printf("\n");
 }
