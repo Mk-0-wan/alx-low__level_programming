@@ -23,7 +23,7 @@ void print_strings(char *separator, const unsigned int n, ...)
 			str = va_arg(ap, char*);
 			/*check if the pointer is empty*/
 			if (str == NULL)
-				printf("nil");
+				printf("(nil)");
 			else
 				printf("%s", str);
 			/*add separator*/
