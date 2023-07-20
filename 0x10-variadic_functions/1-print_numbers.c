@@ -19,9 +19,13 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 
 		for (i = 1; i <= n; i++)
 		{
+			/*checks if separator is present*/
 			if (separator == NULL)
 				return;
-			printf("%d%s", va_arg(ap, int), separator);
+			printf("%d", va_arg(ap, int));
+			/*all have a separator except the last one*/
+			if (i != n)
+				printf("%s", separator);
 		}
 		va_end(ap);
 	}
