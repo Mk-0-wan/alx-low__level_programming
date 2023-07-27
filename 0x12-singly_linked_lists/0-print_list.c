@@ -7,20 +7,20 @@
  */
 size_t print_list(const list_t *h)
 {
-	unsigned int j = 0, i = 0;
+	unsigned int j = 0, i;
 
 	/* casting away the const in order to traverse through linked list*/
 	list_t *curr = (list_t *)h;
 
-	i = curr->len;
-
 	while (curr != NULL)
 	{
+		i = curr->len;
 		if (curr->str == NULL)
 		{
-			printf("[%d] (nil)\n", i - curr->len);
+			curr->str = "(nil)";
+			i = 0;
 		}
-		printf("[%d] %s\n", i, curr->str);
+		printf("[%u] %s\n", i, curr->str);
 		curr = curr->next;
 		j++;
 	}
