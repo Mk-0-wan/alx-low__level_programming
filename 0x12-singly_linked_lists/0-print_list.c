@@ -10,7 +10,8 @@ size_t print_list(const list_t *h)
 	unsigned int j = 0, i = 0;
 
 	/* casting away the const in order to traverse through linked list*/
-	list_t* curr = (list_t*)h;
+	list_t *curr = (list_t *)h;
+
 	i = curr->len;
 
 	while (curr != NULL)
