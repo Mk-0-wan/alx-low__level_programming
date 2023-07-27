@@ -3,20 +3,21 @@
 /**
  * free_list - frees list
  * @head: list to be freed
+ * Return: void
  */
 
 void free_list(list_t *head)
 {
-        list_t *traverse;
+        list_t *nodes;
 
         if (head == NULL)
                 return;
 
         while (head)
         {
-                traverse = head->next;
+                nodes = head->next;
                 free(head->str);
                 free(head);
-                head = traverse;
+                head = nodes;
         }
 }
