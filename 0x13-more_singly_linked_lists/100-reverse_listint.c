@@ -16,9 +16,9 @@ listint_t *reverse_listint(listint_t **head)
 	while (*head)
 	{
 		next = (*head)->next; /*make next pointer to point to another node*/
-        (*head)->next = prev; /*point backwards instead of foward*/
+		(*head)->next = prev; /*point backwards instead of foward*/
 		prev = *head; /*move the curr to prev node*/
-        *head = next; /*update the current node to next then repeat the loop*/
+		*head = next; /*update the current node to next then repeat the loop*/
 	}
 	*head = prev;
 	return (*head);
