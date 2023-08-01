@@ -1,4 +1,6 @@
 #include "lists.h"
+#include <signal.h>
+#include <stddef.h>
 /**
  * print_listint - printing all the list of elements
  * @h: node list
@@ -6,8 +8,7 @@
  */
 size_t print_listint(const listint_t *h)
 {
-	unsigned int j = 0;
-	/* make a new pointer to the list elements */
+	size_t j = 0;
 	const listint_t *curr = h;
 
 	while (curr != NULL)
