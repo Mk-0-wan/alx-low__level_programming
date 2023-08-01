@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stdlib.h>
 /**
  * add_nodeint - pointer to the beginning of the list
  * @head: root of the linked list
@@ -15,10 +16,9 @@ listint_t *add_nodeint(listint_t **head, const int n)
 	{
 		return (NULL);
 	}
-
 	first_node->n = n;
 	first_node->next = (*head);
-	(*head) = first_node;
+	*head = first_node;
 	return (*head);
 }
 
