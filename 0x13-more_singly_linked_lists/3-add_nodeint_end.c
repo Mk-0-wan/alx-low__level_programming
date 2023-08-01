@@ -1,7 +1,7 @@
 #include "lists.h"
 /**
  * add_nodeint_end - adding new node at the end
- * @h: pointer to the node list
+ * @head: pointer to the node list
  * @n: value of each node
  * Return: address to the new node
  */
@@ -9,7 +9,16 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 {
 	listint_t *curr = *head;
 	listint_t *new_node;
-	
+
+	/* lets traverse upto the end */
+	if (curr)
+	{
+		while (curr->next != NULL)
+		{
+			curr = curr->next;
+		}
+	}
+
 	new_node = malloc(sizeof(listint_t));
 	if (new_node != NULL)
 	{
@@ -23,10 +32,6 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 
 	if (curr != NULL)
 	{
-		while (curr->next != NULL)
-		{
-			curr = curr->next;
-		}
 		curr->next = new_node;
 	}
 	else

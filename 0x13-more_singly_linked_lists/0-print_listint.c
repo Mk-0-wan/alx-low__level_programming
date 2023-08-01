@@ -8,7 +8,7 @@ size_t print_listint(const listint_t *h)
 {
 	unsigned int j = 0;
 	/* make a new pointer to the list elements */
-	listint_t *curr = (listint_t *)h;
+	const listint_t *curr = h;
 
 	while (curr != NULL)
 	{
