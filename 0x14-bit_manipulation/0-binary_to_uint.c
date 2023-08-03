@@ -6,7 +6,7 @@
  */
 int _strlen(const char *str)
 {
-	unsigned int len, i = 0;
+	unsigned int len;
 
 	len = 0;
 	while (*str++)
@@ -22,8 +22,7 @@ int _strlen(const char *str)
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int i = 0, s = 0, decimal = 0, j = 0, number, position, *digits;
-	double iteration = 0;
+	unsigned int i = 0, s = 0, decimal = 0, j = 0, number, *digits;
 	/*first make the string into a number*/
 
 	if (b == NULL || (b[i] != '1' && b[i] != '0'))
