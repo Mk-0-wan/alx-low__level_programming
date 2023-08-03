@@ -23,9 +23,10 @@ unsigned long int _power(unsigned int base, unsigned int pow)
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int mask = _power(2, sizeof(unsigned long int) * 8 - 1); 
+	unsigned long int mask; 
 	char flag = 0; /*will be used for bit comparison*/
 
+    mask = _power(2, sizeof(unsigned long int) * 8 - 1); 
 	while (mask > 0)
 	{
 		if ((n & mask) == 0 && (flag || mask == 0x01))
