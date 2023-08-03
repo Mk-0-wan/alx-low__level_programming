@@ -2,7 +2,7 @@
 
 /**
  * clear_bit - changes the value of a bit at a given position
- * @n: num  of bits which are represented by x 
+ * @n: num  of bits which are represented by x
  * @index: checking point
  * Return: 1 if it worked, or -1 if an error occurred
  */
