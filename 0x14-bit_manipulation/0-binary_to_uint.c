@@ -22,19 +22,22 @@ int _strlen(const char *str)
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int i = 0, s = 0, decimal = 0, j = 0, number, *digits;
-	/*first make the string into a number*/
+	int i = 0, s = 0, decimal = 0, j = 0;
+	unsigned int number, *digits;
 
 	if (b == NULL || (b[i] != '1' && b[i] != '0'))
 	{
 		return (0);
 	}
+
 	digits = malloc(_strlen(b) * sizeof(int));
+
 	if (!digits)
 	{
 		printf("Memory allocation failed");
 		exit(98);
 	}
+
 	while (b[i] != '\0')
 	{
 		if (b[i] >= '0' && b[i] <= '9')
@@ -51,6 +54,7 @@ unsigned int binary_to_uint(const char *b)
 	{
 		decimal = decimal * 2 + digits[s];
 	}
+
 	free(digits);
 	return (decimal);
 }
