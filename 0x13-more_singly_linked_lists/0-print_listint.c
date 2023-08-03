@@ -9,9 +9,11 @@
 size_t print_listint(const listint_t *h)
 {
 	size_t j = 0;
-	const listint_t *curr = h;
+	const listint_t *curr;
 
-	while (curr != NULL)
+	curr = h;
+
+	while (curr)
 	{
 		printf("%d\n", curr->n);
 		curr = curr->next;
