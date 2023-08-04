@@ -9,13 +9,13 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned int num_bits;
+	unsigned int num_bits = 0;
 	unsigned long int exclusive_or;
 	unsigned long int mask;
 	/*Getting only the least possible bits*/
 	exclusive_or = (n ^ m);
 	/*same as one bit, helps determine the bits changed by exclusive_or*/
-	mask = 0x01;
+	mask = 1;
 	while (mask <= exclusive_or)
 	{
 		if (mask & exclusive_or)
