@@ -10,8 +10,8 @@
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
 	unsigned int num_bits = 0;
-	unsigned long int exclusive_or = (n ^ m);;
-	unsigned long int mask = 1;/*same as one bit, helps determine the bits changed by exclusive_or*/
+	unsigned long int exclusive_or = (n ^ m);
+	unsigned long int mask = 1; /*same as one bit, helps determine the bits changed by exclusive_or*/
 
 	while (mask <= exclusive_or)
 	{
