@@ -8,14 +8,14 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	int fd = -1, n_writes = 0, len;
+	int fd, n_writes = 0, len;
 
 	if (!filename)
 	{
 		return (-1);
 	}
-	fd = open(filename, O_RDWR | O_TRUNC | O_CREAT, 0600);
-	if (fd == -1)
+	fd = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0600);
+	if (fd < 0)
 	{
 		return (-1);
 	}
@@ -26,7 +26,7 @@ int create_file(const char *filename, char *text_content)
 	n_writes = write(fd, text_content, len);
 
 	close(fd);
-	if (n_writes == -1)
+	if (n_writes < 0)
 	{
 		return (-1);
 	}
