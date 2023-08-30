@@ -29,27 +29,8 @@ int _sqrt_recursion(int n)
 {
 	if (n < 0)
 		return (-1); /* can't handle negative numbers */
-	if (n == 0 || n == 1)
+	if (n == 0 || n == 1) /* exit cases (absolute values) */
 		return (1);
 	/* call another recursive function */
 	return (sqrT(n, n / 2, 0));
-}
-
-/**
- * main - check the code for Holberton School students.
- *
- * Return: Always 0.
- */
-int main(void)
-{
-	int r;
-
-
-	r = _sqrt_recursion(16777216);
-	printf("%d\n", r);
-	r = _sqrt_recursion(1);
-	printf("%d\n", r);
-	r = _sqrt_recursion(4096);
-	printf("%d\n", r);
-	return (0);
 }
