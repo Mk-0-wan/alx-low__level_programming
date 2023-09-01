@@ -5,8 +5,8 @@ A Collections of cod routines(functions, classes and variables) that can be call
 In simple terms it allows programmers to reuse a code block from somewhere else.
 ***
 ##### Why do i need it
-1.Fast during compilations of huge programs.
-2.Reliable since it allows us to reuse code blocks.
+1. Fast during compilations of huge programs.
+2. Reliable since it allows us to reuse code blocks.
 
 * Those are just but few i could find useful at my level of using static library with c.
 * Static libraries store the copy of the object c code in an archive file.
