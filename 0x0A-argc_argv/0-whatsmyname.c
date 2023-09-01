@@ -6,12 +6,9 @@
  * @argv: list of array of array
  * Return: 0 success
  */
-int main(int argc, char *argv[])
+int main(int argc __attribute__((unused)), char *argv[])
 {
-	/* nothing special just print out the first argument */
-	(void)argc;
-
-	printf("%s\n", argv[0]);
+	printf("%s\n", *argv);
 
 	return (0);
 }
