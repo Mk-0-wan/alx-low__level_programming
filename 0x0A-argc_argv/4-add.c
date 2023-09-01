@@ -37,17 +37,16 @@ int _atoi(char *s)
  */
 int main(int argc, char *argv[])
 {
-	int x, i = 1, result;
+	int i, result = 0;
 
-	for (; i < argc; i++)
+	for (i = 1; i < argc; i++)
 	{
-		x = _atoi(argv[i]);
-		if (!x)
+		if (!_atoi(argv[i]))
 		{
 			printf("Error\n");
 			return (1);
 		}
-		result += x;
+		result += _atoi(argv[i]);
 	}
 	printf("%d\n", result);
 	return (0);
