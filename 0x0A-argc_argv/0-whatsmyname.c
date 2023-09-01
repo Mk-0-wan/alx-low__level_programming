@@ -9,6 +9,8 @@
 int main(int argc, char **argv)
 {
 	/* nothing special just print out the first argument */
+	(void)argc;
+
 	printf("%s\n", argv[0]);
 
 	return (0);
