@@ -39,9 +39,6 @@ int main(int argc, char *argv[])
 {
 	int x = 0, i = 1, result = 0;
 
-	if (argc < 1)
-		return (0);
-
 	for (; i < argc; i++)
 	{
 		x = _atoi(argv[i]);
