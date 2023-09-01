@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
  * main - prints the argv[0]
  * @argc: number of counts
