@@ -37,7 +37,7 @@ int _atoi(char *s)
  */
 int main(int argc, char *argv[])
 {
-	int x = 0, i = 1, result = 0;
+	int x, i = 1, result;
 
 	for (; i < argc; i++)
 	{
