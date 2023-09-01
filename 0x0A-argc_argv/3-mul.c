@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
  * main - multiple of two arguments
  * @argc: argument count
@@ -8,9 +8,9 @@
  */
 int main(int argc, char *argv[])
 {
-	int x, y, result;
+	int x = 0, y = 0, result = 0;
 
-	if (argc < 2)
+	if (argc < 3 || argc > 3)
 	{
 		printf("Error\n");
 		return (1);
