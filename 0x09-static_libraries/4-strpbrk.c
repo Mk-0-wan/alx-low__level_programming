@@ -1,8 +1,8 @@
 #include "main.h"
 /**
  * _strpbrk - Entry point
- * @s: input
- * @accept: input
+ * @s: pointer to a string
+ * @accept: pointer to a string of accepted chars
  * Return: Always 0 (Success)
  */
 char *_strpbrk(char *s, char *accept)
