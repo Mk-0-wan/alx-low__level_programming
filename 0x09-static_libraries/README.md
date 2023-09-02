@@ -14,7 +14,7 @@ In simple terms it allows programmers to reuse a code block from somewhere else.
 ```
     ar -s [or] randlib libname.a
 ```
-* This is for faster symbolic lookup during run-time of the program. We all no fast is good since of a reliable program.
+* This is for faster symbolic lookup during run-time of the program. We all know fast is good.
 ***
 ### Creating a Static Library
 * There are few steps one needs to follow in order to achieve the result.
