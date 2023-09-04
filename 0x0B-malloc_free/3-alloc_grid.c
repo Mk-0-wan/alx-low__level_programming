@@ -11,6 +11,9 @@ int **alloc_grid(int width, int height)
 	int i = 0, j = 0;
 	int **ar;
 
+	/* nothing is set just print nothing */
+	if (width <= 0 || height <= 0)
+		return (NULL);
 	/* memory allocation to each column */
 	ar = (int **)malloc(height * sizeof(int *));
 	MALLOC_CHECK(ar);
@@ -19,7 +22,16 @@ int **alloc_grid(int width, int height)
 	for (; i < height; i++)
 	{
 		ar[i] = (int *)malloc(width * sizeof(int));
-		MALLOC_CHECK(ar);
+		MALLOC_CHECK(ar[i]);
+		if (ar[i] == NULL)
+		{
+			/* free the memory you have just allocated */
+			for (; height >= 0; height--)
+				free(ar[i]);
+			/* also don't forget for columns also */
+			free(ar);
+			return (NULL);
+		}
 	}
 	/* initialize the array with 0 values */
 	for (; i < height; i++)
