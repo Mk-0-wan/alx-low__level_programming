@@ -15,36 +15,38 @@ int _strlen(char *str)
 	return (len);
 }
 /**
- * argstostr - sorting the arguments passed
- * @ac: number of argument list passed
- * @av: array of arguments passed
- * Return: pointer to the a new appended string
+ * argstostr - string
+ * @ac: argument length
+ * @av: string of char
+ * Return: pointer
  */
 char *argstostr(int ac, char **av)
 {
-	int i = 0, j = 0, len = 0, t_len = 0;
-	char *element, *strings;
+	int i = 0, n = 0, len = 0;
+	char *element, *string;
 
-	if (ac == 0 || av == NULL)
+	if (ac <= 0 || av == NULL)
 		return (NULL);
-	/* getting the length of the array */
+
 	while (i < ac)
 	{
-		t_len += _strlen(av[i] + 1);
+		len += _strlen(av[i]) + 1; /* 1 is space for additional new line */
 		i++;
 	}
-	/* allocate memory to each string of char in the array */
-	element = malloc((t_len + 1) * sizeof(char));
-	/* creating also room for the null byte */
+	element = malloc(sizeof(char) * len + 1); /* null terminator */
 	MALLOC_CHECK(element);
-	strings = element;
-	while (j < ac)
+	string = element;
+
+	i = 0;
+	while (i < ac)
 	{
-		for (len = 0; av[j][len]; len++)
-			*element++ = av[j][len];
+		for (n = 0; av[i][n]; n++)
+		{
+			*element++ = av[i][n];
+		}
 		*element++ = '\n';
-		j++;
+		i++;
 	}
 	*element = '\0';
-	return (strings);
+	return (string);
 }
