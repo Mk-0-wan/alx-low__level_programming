@@ -20,7 +20,7 @@ char *create_array(unsigned int size, char c)
 	MALLOC_CHECK(arry);
 	while (i <= size)
 	{
-		arry[i] = _putchar(c);
+		arry[i] = c;
 		i++;
 	}
 	return (arry);
