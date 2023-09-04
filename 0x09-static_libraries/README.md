@@ -1,7 +1,7 @@
-### Static Library
+## Static Library
 ***
 
-A Collections of cod routines(functions, classes and variables) that can be called upon building of a program.
+A Collections of code routines(functions, classes and variables) that can be called upon building of a program.
 In simple terms it allows programmers to reuse a code block from somewhere else.
 ***
 ##### Why do i need it
@@ -14,14 +14,14 @@ In simple terms it allows programmers to reuse a code block from somewhere else.
 ```
     ar -s [or] randlib libname.a
 ```
-* This is for faster symbolic lookup during run-time of the program. We all no fast is good since of a reliable program.
+* This is for faster symbolic lookup during run-time of the program. We all know fast is good.
 ***
 ### Creating a Static Library
 * There are few steps one needs to follow in order to achieve the result.
 
 1. Create all the required object files.
 ```
-    gcc -c *.c
+    gcc -Werror -Wextra -Wall -Wno-unsused-parameter -pedantic -std=gnu89 -c *.c
 ```
 2. Create an archive inside the same directory.
 ```
@@ -29,7 +29,7 @@ In simple terms it allows programmers to reuse a code block from somewhere else.
 ```
 I have added the `-s` options which saves us the hassle of using the `randlib libname.a` command again.
 3. Move the static library to the directory where your main.c file is.
-4. Compiling the program using the static library. Use these command.
+4. To compile the program using the static library. Use these command.
 ```
     gcc main.c main.h -L. -lname -o main
 ```
