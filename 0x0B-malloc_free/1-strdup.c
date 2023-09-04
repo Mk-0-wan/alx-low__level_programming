@@ -22,5 +22,6 @@ char *_strdup(char *str)
 		cp_str[i] = str[i]; /* copy over each char */
 		i++;
 	}
+	cp_str[len] = '\0'; /* add a null terminator */
 	return (cp_str);
 }
