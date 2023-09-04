@@ -21,9 +21,9 @@ Now this keeps on happening again and again the only difference between the two 
 ```c
 /* this is the simplest diagram of a stack representation in the memroy visually */
 
-		   -|-0
-		  --|--1
-		----|----2
+	       -|-0
+	      --|--1
+	    ----|----2
 	  ------|------3
 	--------|--------...
 ```
