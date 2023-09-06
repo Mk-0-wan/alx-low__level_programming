@@ -63,7 +63,8 @@ char **strtow(char *str)
 	while (i < w_len)
 	{
 		/* first get words out of the string */
-		str = x_word(str);
+		if (*str == ' ' || *str == '\t')
+			str = x_word(str);
 		wr_l = 0;
 		/* allocate memory to all the found words */
 		while (str[wr_l] != ' ' && str[wr_l] != '\t' && str[wr_l] != '\0')
