@@ -57,7 +57,7 @@ char **strtow(char *str)
 	if (w_len == 0)
 		return (NULL);
 	/* allocate memory to the parent array */
-	f_words = malloc(sizeof(char *) * w_len + 1);
+	f_words = malloc(sizeof(char *) * (w_len + 1));
 	MALLOC_CHECK(f_words);
 	/* allocate memory to the children arrays */
 	while (i < w_len)
