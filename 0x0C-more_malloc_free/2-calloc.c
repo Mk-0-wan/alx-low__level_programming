@@ -21,6 +21,6 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	/* initialize all the space to value 0 */
 	set = temp;
 	for (; i < nmemb; i++)
-		set[i] = 0;
+		set[i] = '\0';
 	return (temp);
 }
