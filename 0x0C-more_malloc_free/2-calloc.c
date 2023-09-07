@@ -9,7 +9,8 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	void *temp;
-	int i = 0, *set;
+	unsigned int i = 0;
+	int *set;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
@@ -18,7 +19,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	if (!temp)
 		return (NULL);
 	/* initialize all the space to value 0 */
-	set = (int *)temp;
+	set = temp;
 	for (; i < nmemb; i++)
 		set[i] = 0;
 	return (temp);
