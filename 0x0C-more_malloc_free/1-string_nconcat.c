@@ -31,7 +31,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		return (NULL);
 
 	len = _strlen(s2);
-	if (n > len)
+	if (n > (unsigned int)len)
 		n = len;
 
 	total_len = _strlen(s1) + n;
