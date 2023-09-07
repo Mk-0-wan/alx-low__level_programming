@@ -37,7 +37,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	total_len = _strlen(s1) + n;
 
 	temp = malloc(sizeof(char) * (total_len + 1)); /* null terminator space */
-	MALLOC_CHECK(temp);
+	if (!temp)
+		return (NULL);
 
 	while (*s1 != '\0')
 	{
