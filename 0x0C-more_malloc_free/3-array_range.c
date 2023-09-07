@@ -17,11 +17,13 @@ int *array_range(int min, int max)
 
 	temp = malloc(sizeof(int) * total_len);
 	MALLOC_CHECK(temp);
+	/* made it flexible to hold any kind of range the user passes to it */
 
-	for (; i <= max; i++)
+	while (min <= max)
 	{
 		temp[i] = min;
 		min++;
+		i++;
 	}
 	return (temp);
 }
