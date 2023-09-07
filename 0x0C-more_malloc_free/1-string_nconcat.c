@@ -24,14 +24,14 @@ int _strlen(char *s)
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	int len = 0, total_len = 0;
+	unsigned int len = 0, total_len = 0;
 	char *temp;
 
 	if (!s1 || !s2)
 		return (NULL);
 
 	len = _strlen(s2);
-	if (n > (unsigned int)len)
+	if (n > len)
 		n = len;
 
 	total_len = _strlen(s1) + n;
