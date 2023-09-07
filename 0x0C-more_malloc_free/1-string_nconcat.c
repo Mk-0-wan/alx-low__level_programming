@@ -1,5 +1,19 @@
 #include "main.h"
+/**
+ * _strlen - get the length of a string
+ * @s: pointer to a string of chars
+ * Return: length of the string
+ */
+int _strlen(char *s)
+{
+	int len = 0;
 
+	while (s[len])
+	{
+		len++;
+	}
+	return (len);
+}
 /**
  * string_nconcat - append two string together according to the given n
  * of chars to append to.
