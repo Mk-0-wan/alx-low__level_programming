@@ -15,13 +15,11 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 
 	temp = malloc(sizeof(size) * nmemb);
-	MALLOC_CHECK(temp);
+	if (!temp)
+		return (NULL);
 	/* initialize all the space to value 0 */
 	set = (int *)temp;
 	for (; i < nmemb; i++)
 		set[i] = 0;
 	return (temp);
 }
-
-
-
