@@ -27,8 +27,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	unsigned int len = 0, total_len = 0;
 	char *temp;
 
-	if ((!s1 || !s2) || (!s1 && !s2))
-		return ("");
+	if (!s1)
+		s1 = "";
+	if (!s2)
+		s2 = "";
 
 	len = _strlen(s2);
 	if (n > len)
