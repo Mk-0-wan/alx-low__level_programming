@@ -1,18 +1,5 @@
-#ifndef DOG_H
-#define DOG_H
-
-/* Header files */
-#include <stdio.h>
-#include <stdlib.h>
-
-/* Custom Malloc_checker */
-#define MALLOC_CHECK(x)\
-	do{\
-		if (!(x))\
-		{\
-			return;\
-		}\
-	}while(0)
+#ifndef _DOG_H_
+#define _DOG_H_
 
 /**
  * struct dog - simple data struct for a dog
@@ -35,10 +22,9 @@ struct dog
  */
 typedef struct dog dog_t;
 
-/* defined function */
+/* Defined function */
 void init_dog(struct dog *d, char *name, float age, char *owner);
 void print_dog(struct dog *d);
 dog_t *new_dog(char *name, float age, char *owner);
 void free_dog(dog_t *d);
-
 #endif
