@@ -54,10 +54,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (name)
 	{
 		name = malloc(sizeof(char) * (_strlen(name) + 1));
-		if (!name)
-		{
-			return (NULL);
-		}
+		MALLOC_CHECK(name);
 		_strcpy(obj_holder->name, name);
 	}
 	else
@@ -69,17 +66,14 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (owner)
 	{
 		owner = malloc(sizeof(char) * (_strlen(owner) + 1));
-		if (!owner)
-		{
-			return (NULL);
-		}
+		MALLOC_CHECK(owner);
 		_strcpy(obj_holder->owner, owner);
 	}
 	else
 	{
 		free(obj_holder->name);
-		return (NULL);
 		free(obj_holder);
+		return (NULL);
 	}
 	return (obj_holder);
 }
