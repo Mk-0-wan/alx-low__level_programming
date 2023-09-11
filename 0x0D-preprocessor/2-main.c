@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 /**
  * main - simple c program that prints out the name of file
  * Return: 0 (success)
