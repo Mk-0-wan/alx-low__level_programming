@@ -1,6 +1,10 @@
 #ifndef DOG_H
 #define DOG_H
 
+/* Header files */
+#include <stdio.h>
+#include <stdlib.h>
+
 #define MALLOC_CHECK(x)\
 	do{\
 		if (!(x))\
@@ -15,12 +19,17 @@
  * Description: Simple declaration of a data structure of a dog
  * age and its owner name
  */
-typedef struct dog
+struct dog
 {
 	char *name;
 	float age;
 	char *owner;
-}dog_t;
+};
+
+/**
+ * dog_t - typedef struct dog
+ */
+typedef struct dog dog_t;
 
 /* defined function */
 void init_dog(struct dog *d, char *name, float age, char *owner);
