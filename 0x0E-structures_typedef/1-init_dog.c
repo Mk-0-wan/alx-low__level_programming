@@ -1,5 +1,5 @@
 #include "dog.h"
-
+#include <stdlib.h>
 /**
  * init_dog - initialized the data structures members
  * @d: copy of the data structure
@@ -10,11 +10,9 @@
  */
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-	if (!d) /* create space for the new object */
+	if (!d)
 	{
-		d = malloc(sizeof(struct dog));
-		MALLOC_CHECK(d);
-
+		return;
 	}
 
 	d->name = name;
