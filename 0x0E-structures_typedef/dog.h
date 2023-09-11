@@ -17,6 +17,13 @@ struct dog
 	char *owner;
 };
 
+#define MALLOC_CHECK(x)\
+	do{\
+		if (!(x))\
+		{\
+			return (NULL);\
+		}\
+	}while(0)
 /**
  * dog_t - typedef struct dog
  */
