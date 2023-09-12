@@ -1,6 +1,7 @@
 #include "dog.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <threads.h>
 /**
  * _strlen - return the length of an array
  * @s: array of chars
@@ -52,8 +53,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 	obj_holder->name = name;
 	if (name)
 	{
-		name = malloc(sizeof(char) * (_strlen(name) + 1));
-		if (!name)
+		obj_holder->name = malloc(sizeof(char) * (_strlen(name) + 1));
+		if (!obj_holder->name)
 			return (NULL);
 		obj_holder->name = _strcpy(obj_holder->name, name);
 	}
@@ -66,8 +67,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 	obj_holder->owner = owner;
 	if (owner)
 	{
-		owner = malloc(sizeof(char) * (_strlen(owner) + 1));
-		if (!name)
+		obj_holder->owner = malloc(sizeof(char) * (_strlen(owner) + 1));
+		if (!obj_holder->owner)
 			return (NULL);
 		obj_holder->owner = _strcpy(obj_holder->owner, owner);
 	}
