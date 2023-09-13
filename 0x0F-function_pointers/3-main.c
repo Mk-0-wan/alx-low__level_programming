@@ -72,25 +72,30 @@ int main(int argc, char *argv[])
 	op_t opx;
 	int x, y, result = 0;
 
-	if (argc < 4)
+	if (argc != 4)
 	{
 		_puts_recursion("Error\n");
 		exit(98);
 	}
+
 	opx.op = argv[2];
-	if (_strcmp(argv[2], opx.op) != 0)
+
+	if ((*(argv[2]) == '/' || *(argv[2]) == '%') && !_atoi(argv[3]))
 	{
 		_puts_recursion("Error\n");
-		return (99);
+		return (100);
 	}
+
 	x = _atoi(argv[1]);
 	y = _atoi(argv[3]);
 
 	opx.f = get_op_func(argv[2]);
-	if (opx.f)
+	if (!opx.f || argv[2][1] != '\0')
 	{
-		result = opx.f(x, y);
-		printf("%d\n", result);
+		printf("Error\n");
+		return (100);
 	}
+	result = opx.f(x, y);
+	printf("%d\n", result);
 	return (0);
 }
