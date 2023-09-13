@@ -16,8 +16,7 @@
 ```
 2. All function which return a pointer and you want to handle edge cases or errors always make sure to `return (NULL);` to avoid compiler complication.
 3. Make sure that you are checking that where the function pointer is pointing to is not NULL `if (!fptr) perror("Invalid memory address");`. Otherwise your code will have problems
-4. With structers you are able to call it multiple times since it is a user defined datatype learn how to use it to your advantage. Example in my
-code i used the struct in the calculator project twice.
+4. With structures you are able to call it multiple times since it is a user defined datatype, learn how to use it to your advantage. Example in my code i used the struct in the calculator project twice.
 
 ### 
 AUTHOR: [MK-0-wan](https://github.com/alx-low_level_programming/0x0F-function_pointers)
