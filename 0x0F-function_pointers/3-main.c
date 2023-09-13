@@ -18,23 +18,26 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
-
+	/* store the operation to the char *op pointer inside the struct */
 	opx.op = argv[2];
 
+	/* check out for wrong divisions with zeros */
 	if ((*(argv[2]) == '/' || *(argv[2]) == '%') && !atoi(argv[3]))
 	{
 		printf("Error\n");
-		return (100);
+		exit(100);
 	}
 
+	/* store the arguments in an int variable */
 	x = atoi(argv[1]);
 	y = atoi(argv[3]);
 
 	opx.f = get_op_func(argv[2]);
+	/* check if the function pointer is NULL and elements */
 	if (!opx.f || argv[2][1] != '\0')
 	{
 		printf("Error\n");
-		return (100);
+		exit(99);
 	}
 	result = opx.f(x, y);
 	printf("%d\n", result);
