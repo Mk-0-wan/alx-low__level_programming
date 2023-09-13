@@ -8,7 +8,7 @@
  */
 void print_name(char *name, void (*f)(char *x))
 {
-	if (!name)
+	if (!name || !f)
 		return;
 	f(name);
 }
