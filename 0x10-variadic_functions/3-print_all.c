@@ -52,7 +52,7 @@ void _string_arg(va_list *ap)
 
 	/* check for empty strings */
 	if (!s || *s == '\0')
-		printf("(nil)");
+		s = "(nil)";
 
 	printf("%s", s);
 }
