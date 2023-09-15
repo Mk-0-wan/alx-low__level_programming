@@ -79,18 +79,32 @@ void print_all(const char *const format, ...)
 	{
 		/* return the first position you find a match */
 		form_type_no = 0;
-		while (data[form_type_no].call && format[i])
-			form_type_no++;
-
-		/* found form_type_no do this then */
-		if (data[form_type_no].call)
+		while (data[form_type_no].form)
 		{
-			printf("%s", separator);
-			data[form_type_no].call(&ap);
-			separator = ", ";
+			/* found form_type_no do this then */
+			if (format[i] == data[form_type_no].form)
+			{
+				printf("%s", separator);
+				data[form_type_no].call(&ap);
+				separator = ", ";
+				break;
+			}
+			form_type_no++;
 		}
 		i++; /* move to the next char in line */
 	}
 	va_end(ap);
 	printf("\n");
+}
+#include "variadic_functions.h"
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    print_all("ceis", 'B', 3, "stSchool");
+    return (0);
 }
