@@ -7,11 +7,17 @@
 #include <unistd.h>
 
 /* Structure */
+/**
+ * struct format_specifier - Struct format_specifier
+ *
+ * @form: form to print out the value given
+ * @call: The function associated
+ */
 typedef struct format_specifier
 {
 	char form;
 	void (*call)(va_list *);
-}format_x;
+} format_x;
 
 /* Function prototypes */
 int _putchar(char s);
