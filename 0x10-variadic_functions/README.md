@@ -1,8 +1,8 @@
-j## Variadic Function
+## Variadic Function
 This will be used to make a functions which accepts indefinite number of arguments.
 This functions will help us deal with functions having indefinite number of arguments such as the likes of printf.
 
-##### Lists of things you mustake
+### Lists of things you mustake
 * `va_list` >> a list of all the indefinite number of arguments passed to the function
 * `va_start` >> starting point of our indefinite list of arguments
 * `va_arg` >> retrive all the arguments passed according to the datatype given
@@ -12,7 +12,7 @@ This functions will help us deal with functions having indefinite number of argu
 The list will be able to allow us to make use of all the param passed and do something with it.
 Just like any other list you can make pointer to point to its memory address and do all kind of stuff with it.
 
-#### How to retrive data
+### How to retrive data
 After making the list and setting your starting point, lets know get our data
 ```c
 // your code up here
