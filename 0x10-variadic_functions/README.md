@@ -1,4 +1,4 @@
-## Variadic Function
+j## Variadic Function
 This will be used to make a functions which accepts indefinite number of arguments.
 This functions will help us deal with functions having indefinite number of arguments such as the likes of printf.
 
@@ -26,7 +26,7 @@ for ( i = 0; i != sentinal_value; i = va_arg(ap, int))
 * notice the sentinal value which crash or stop the loop once the data retrived matches the sentinal value
 much like calling a KILL SIGNAL on a process.
 * in retriving datatypes of `char` and `float`s they are promoted to `int` and `double` respectively.
-############ 
+
 The ability of having the power to make a function take an undefinite number of arguments surely is a plus while using c.
 Allowing you to process each type of data passed in the argument function and doing something with it.
 
