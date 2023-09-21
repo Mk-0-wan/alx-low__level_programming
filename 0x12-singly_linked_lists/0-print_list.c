@@ -1,19 +1,5 @@
 #include "lists.h"
 
-/**
- * _puts - output the strings to the stdio
- * @s: pointer to a string of chars
- * Return: void
- */
-void _puts(char *s)
-{
-	int i = 0;
-
-	for (; s[i] != '\0'; i++)
-	{
-		_putchar(s[i]);
-	}
-}
 
 /**
  * print_list - prints all the values int the linked list
@@ -32,7 +18,10 @@ size_t print_list(const list_t *h)
 	{
 		if (!current->str)
 		{
-			_puts("(nil)\n");
+			_putchar('[');
+			_putchar(48);
+			_putchar(']');
+			_puts(" (nil)");
 		}
 		else
 		{
@@ -47,4 +36,19 @@ size_t print_list(const list_t *h)
 		count++;
 	}
 	return (count);
+}
+
+/**
+ * _puts - output the strings to the stdio
+ * @s: pointer to a string of chars
+ * Return: void
+ */
+void _puts(char *s)
+{
+	int i = 0;
+
+	for (; s[i] != '\0'; i++)
+	{
+		_putchar(s[i]);
+	}
 }
