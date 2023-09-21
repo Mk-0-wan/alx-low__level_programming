@@ -9,8 +9,7 @@
  */
 size_t print_list(const list_t *h)
 {
-	size_t count = 0;
-	unsigned int len;
+	size_t count = 0, len = 0;
 	const char *s;
 	const list_t *current = h;
 
@@ -20,7 +19,7 @@ size_t print_list(const list_t *h)
 		s = (current->str) ? current->str : "(nil)";
 		if (!current->str)
 			len = 0;
-		printf("[%d] %s\n", len, s);
+		printf("[%lu] %s\n", len, s);
 		current = current->next;
 		count++;
 	}
