@@ -32,11 +32,7 @@ size_t print_list(const list_t *h)
 	{
 		if (!current->str)
 		{
-			_putchar('[');
-			_putchar('0');
-			_putchar(']');
-			_putchar(' ');
-			_puts("(nil)");
+			_puts("(nil)\n");
 		}
 		else
 		{
