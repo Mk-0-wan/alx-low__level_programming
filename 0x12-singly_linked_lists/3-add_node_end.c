@@ -22,6 +22,11 @@ list_t *add_node_end(list_t **head, const char *str)
 		_puts("Memory allocation failed\n");
 		return (NULL);
 	}
+	if (!*head)
+	{
+		*head = new_node;
+		return (new_node);
+	}
 
 	while (str[len])
 		len++;
