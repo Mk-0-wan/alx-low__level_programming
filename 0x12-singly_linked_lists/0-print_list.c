@@ -1,20 +1,6 @@
 #include "lists.h"
 
 /**
- * _strlen - get the length of a string
- * @s: pointer to a string of chars
- * Return: length of the string
- */
-int _strlen(char *s)
-{
-	int len = 0;
-
-	while (s[len])
-		len++;
-	return (len);
-}
-
-/**
  * _puts - output the strings to the stdio
  * @s: pointer to a string of chars
  * Return: void
@@ -36,7 +22,6 @@ void _puts(char *s)
  */
 size_t print_list(const list_t *h)
 {
-	unsigned int len = 0;
 	unsigned int count = 0;
 	const list_t *current = h;
 
@@ -55,9 +40,8 @@ size_t print_list(const list_t *h)
 		}
 		else
 		{
-			len = _strlen(current->str);
 			_putchar('[');
-			_putchar(len + '0');
+			_putchar(current->len + '0');
 			_putchar(']');
 			_putchar(' ');
 			_puts(current->str);
