@@ -10,11 +10,11 @@
 size_t print_list(const list_t *h)
 {
 	size_t count = 0;
-	unsigned int len;
+	unsigned int len = 0;
 	const char *s;
 	const list_t *current = h;
 
-	while (current != NULL)
+	while (current)
 	{
 		len = current->len;
 		s = (current->str) ? current->str : "(nil)";
@@ -23,19 +23,4 @@ size_t print_list(const list_t *h)
 		count++;
 	}
 	return (count);
-}
-
-/**
- * _puts - output the strings to the stdio
- * @s: pointer to a string of chars
- * Return: void
- */
-void _puts(char *s)
-{
-	int i = 0;
-
-	for (; s[i] != '\0'; i++)
-	{
-		_putchar(s[i]);
-	}
 }
