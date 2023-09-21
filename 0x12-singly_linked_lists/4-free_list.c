@@ -7,7 +7,7 @@
  */
 void free_list(list_t *head)
 {
-	list_t *temp;
+	list_t *temp, *current = head;
 
 	if (!head)
 	{
@@ -15,11 +15,11 @@ void free_list(list_t *head)
 		return;
 	}
 
-	while (head->next)
+	while (current)
 	{
-		temp = head->next;
-		free(head->str);
-		free(head);
-		head = temp;
+		temp = current->next;
+		free(current->str);
+		free(current);
+		current = temp;
 	}
 }
