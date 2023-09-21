@@ -5,7 +5,7 @@
 * Have fun looking around the directory and hopefully you will find this useful. Good luck.
 #### Tips and Tricks
 1. To shorten the burden of writing a long confusing function pointer as an argument, use this instead.
-```
+```c
     typedef (*function_ptr)(datatypes);
 
     /* prop */
