@@ -8,7 +8,7 @@
  */
 size_t print_list(const list_t *h)
 {
-	unsigned int count = 0;
+	unsigned int count = 0, len;
 	const list_t *current = h;
 
 	if (!h)
@@ -16,17 +16,19 @@ size_t print_list(const list_t *h)
 
 	while (current != NULL)
 	{
+		len = current->len;
 		if (!current->str)
 		{
+			len = 0;
 			_putchar('[');
-			_putchar(48);
+			_putchar(len + '0');
 			_putchar(']');
 			_puts(" (nil)");
 		}
 		else
 		{
 			_putchar('[');
-			_putchar(current->len + '0');
+			_putchar(len + '0');
 			_putchar(']');
 			_putchar(' ');
 			_puts(current->str);
