@@ -2,27 +2,6 @@
 #include <stdio.h>
 
 /**
- * pop_listint - removes the head node
- * @head: pointer to the first node
- * Return: head node data (n)
- */
-int pop_listint(listint_t **head)
-{
-	listint_t *new_node;
-	int ret = 0;
-
-	if (!*head)
-	{
-		return (-1);
-	}
-	ret = (*head)->n; /* collect head node val */
-	new_node = (*head)->next; /* store the next node */
-	free(*head);
-	*head = new_node; /* make new node the new head node */
-	return (ret);
-}
-
-/**
  * delete_nodeint_at_index - deleting node at a given position
  * @head: pointer to the first node in the list
  * @index: position of the indexed node in the list
@@ -36,11 +15,14 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 
 	if (!*head)
 		return (-1);
+	temp = *head;
 	if (index == 0)
 	{
-		pop_listint(head);
+		temp = temp->next;
+		*head = temp;
+		free(temp);
+		return (1);
 	}
-
 	temp = NULL;
 	current = *head;
 	while (i < (index - 1))
