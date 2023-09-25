@@ -13,7 +13,7 @@ int pop_listint(listint_t **head)
 
 	if (!*head)
 	{
-		return (0);
+		return (-1);
 	}
 	new_node = (*head)->next; /* store the next node */
 	ret = (*head)->n; /* collect head node val */
@@ -50,7 +50,6 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	}
 	if (!current)
 	{
-		printf("Opps you have reached the end of the list\n");
 		return (-1);
 	}
 	temp = current->next;

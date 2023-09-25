@@ -12,7 +12,6 @@ int pop_listint(listint_t **head)
 
 	if (!*head)
 	{
-		printf("Appears you have an empty list\n");
 		return (0);
 	}
 	new_node = (*head)->next; /* store the next node */
