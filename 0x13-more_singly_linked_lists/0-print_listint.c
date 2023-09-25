@@ -12,12 +12,6 @@ size_t print_listint(const listint_t *h)
 	unsigned int no_nodes = 0;
 	const listint_t *current = NULL;
 
-	if (!h)
-	{
-		printf("Appears you have an empty list\n");
-		return (-1);
-	}
-
 	current = h;
 
 	while (current)
