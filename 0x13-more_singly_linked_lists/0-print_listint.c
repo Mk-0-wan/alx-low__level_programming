@@ -14,7 +14,7 @@ size_t print_listint(const listint_t *h)
 
 	if (!h)
 	{
-		_puts("Appears you have an empty list");
+		printf("Appears you have an empty list\n");
 		return (-1);
 	}
 
@@ -27,24 +27,4 @@ size_t print_listint(const listint_t *h)
 		no_nodes++;
 	}
 	return (no_nodes);
-}
-
-/**
- * _puts - tries to emulate the printf-function
- * @str: pointer to a string of char
- * Return: void
- */
-void _puts(char *str)
-{
-	unsigned int i = 0;
-
-	if (!str)
-		return;
-
-	while (str[i])
-	{
-		write(STDOUT_FILENO, &str[i], 1);
-		i++;
-	}
-	write(STDOUT_FILENO, "\n", 1);
 }
