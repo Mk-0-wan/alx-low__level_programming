@@ -50,7 +50,6 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	}
 	if (!current)
 	{
-		printf("Opps you have reached the end of the list\n");
 		return (-1);
 	}
 	temp = current->next;
