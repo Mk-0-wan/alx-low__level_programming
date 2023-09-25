@@ -9,7 +9,7 @@
  */
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-	listint_t *current, *index_node;
+	listint_t *current;
 	unsigned int i = 0;
 
 	if (!head) /* check for empty list */
@@ -17,7 +17,7 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 		return (NULL);
 	}
 	current = head;
-	while (i < (index - 1)) /* move one step back then one ahead */
+	while (i < index) /* move one step back then one ahead */
 	{
 		if (!current->next)
 		{
@@ -26,6 +26,5 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 		current = current->next;
 		i++;
 	}
-	index_node = current->next;/* found node */
-	return (index_node);
+	return (current);
 }
