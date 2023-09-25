@@ -12,15 +12,14 @@ int sum_listint(listint_t *head)
 
 	if (!head)
 	{
-		printf("Appears you have an empty list\n");
 		return (0);
 	}
 
 	current = head;
-	while (current->next)
+	while (current)
 	{
-		current = current->next;
 		sum += current->n;
+		current = current->next;
 	}
 	return (sum);
 }
