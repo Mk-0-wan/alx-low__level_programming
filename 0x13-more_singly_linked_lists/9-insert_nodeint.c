@@ -16,7 +16,6 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	new_replacing_node = malloc(sizeof(listint_t));
 	if (!new_replacing_node)
 	{
-		printf("Memory allocation failed\n");
 		return (NULL);
 	}
 
@@ -32,7 +31,6 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	{
 		if (!current)
 		{
-			printf("Opps you have reached the end of the list\n");
 			free(new_replacing_node);
 			return (NULL);
 		}
@@ -41,7 +39,6 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	}
 	if (!current)
 	{
-		printf("Opps you have reached the end of the list\n");
 		free(new_replacing_node);
 		return (NULL);
 	}
