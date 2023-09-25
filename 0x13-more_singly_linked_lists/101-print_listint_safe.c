@@ -1,77 +1,32 @@
 #include "lists.h"
 #include <stdalign.h>
-#include <stddef.h>
 
-/**
- * safe_node_count - counts the number of nodes present in the list
- * recursively repeating the count
- * @head: pointer of the first node element of the node list
- * Return: number of nodes in the list
- */
-size_t safe_node_count(const listint_t *head)
-{
-	const listint_t *slow = NULL, *fast = NULL;
-	size_t node_count = 1;
-
-	if (!head || !head->next)
-		return (0);
-
-	slow = head->next;
-	fast = (head->next)->next;
-
-	while (fast)
-	{
-		if (slow == fast)
-		{
-			slow = head;
-			while (slow != fast)
-			{
-				node_count++;
-				slow = slow->next;
-				fast = fast->next;
-			}
-			slow = slow->next;
-			while (slow != fast)
-			{
-				node_count++;
-				slow = slow->next;
-			}
-			return (node_count);
-		}
-		slow = slow->next;
-		fast = (fast->next)->next;
-	}
-	return (0);
-}
 /**
  * print_listint_safe - prints all the node list elements (safe version)
  * @head: pointer of the first node element of the node list
  * Return: number of nodes in the list
  */
-
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t no_of_nodes = 0, i = 0;
+	size_t no_of_nodes = 0;
+	const listint_t *fast = NULL, *loop_node = NULL;
 
-	no_of_nodes = safe_node_count(head);
+	fast = head;
+	if (!head)
+		exit(98);
 
-	if (no_of_nodes == 0)
+	while (fast)
 	{
-		while (head)
+		printf("[%p] %d\n", (void *)fast, fast->n);
+		fast = fast->next;
+		no_of_nodes++;
+
+		if (fast && fast->next && fast->next == fast && no_of_nodes > 2)
 		{
-			no_of_nodes++;
-			printf("[%p] %d\n", (void *)head, head->n);
-			head = head->next;
+			loop_node = fast;
+			printf(" --> [%p] %d\n", (void *)loop_node, loop_node->n);
+			exit(98);
 		}
-	}
-	else
-	{
-		while (i < no_of_nodes)
-		{
-			printf("[%p] %d\n", (void *)head, head->n);
-			head = head->next;
-		}
-		printf("--> [%p] %d\n", (void *)head, head->n);
 	}
 	return (no_of_nodes);
 }
