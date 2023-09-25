@@ -14,19 +14,13 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 
 	if (!head) /* check for empty list */
 	{
-		printf("Appears you have an empty list\n");
 		return (NULL);
-	}
-	if (index == 0)
-	{
-		return (head);
 	}
 	current = head;
 	while (i < (index - 1)) /* move one step back then one ahead */
 	{
 		if (!current->next)
 		{
-			printf("You have reached the end of the list\n");
 			return (NULL);
 		}
 		current = current->next;
