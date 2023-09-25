@@ -15,8 +15,8 @@ int pop_listint(listint_t **head)
 	{
 		return (-1);
 	}
-	new_node = (*head)->next; /* store the next node */
 	ret = (*head)->n; /* collect head node val */
+	new_node = (*head)->next; /* store the next node */
 	free(*head);
 	*head = new_node; /* make new node the new head node */
 	return (ret);
