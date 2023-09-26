@@ -14,8 +14,8 @@ size_t print_listint_safe(const listint_t *h)
 	const listint_t *fast = NULL, *slow = NULL;
 
 	fast = h;
-	if (!h)
-		return (n_nodes);
+	if (!h || !h->next)
+		return (0);
 	while (fast)
 	{
 		printf("[%p] %d\n", (void *)fast, fast->n);
