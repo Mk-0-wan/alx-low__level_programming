@@ -15,7 +15,7 @@ size_t print_listint_safe(const listint_t *h)
 
 	fast = h;
 	if (!h || !h->next)
-		exit(98);
+		return (0);
 	while (fast)
 	{
 		printf("[%p] %d\n", (void *)fast, fast->n);
