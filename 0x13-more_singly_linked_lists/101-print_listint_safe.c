@@ -27,6 +27,7 @@ size_t print_listint_safe(const listint_t *h)
 			if (slow == fast)
 			{
 				printf("-> [%p] %d\n", (void *)slow, slow->n);
+				n_nodes++;
 				exit(98);
 			}
 			slow = slow->next;
