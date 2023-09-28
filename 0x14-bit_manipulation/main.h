@@ -1,10 +1,8 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
-/* ALX require header files */
 #include <stdio.h>
 #include <unistd.h>
-
 #define CHAR_BIT 8
 
 int _putchar(char c);
@@ -15,4 +13,5 @@ int set_bit(unsigned long int *n, unsigned int index);
 int clear_bit(unsigned long int *n, unsigned int index);
 unsigned int flip_bits(unsigned long int n, unsigned long int m);
 int get_endianness(void);
+
 #endif
