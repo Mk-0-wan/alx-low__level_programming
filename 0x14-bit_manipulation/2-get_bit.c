@@ -18,6 +18,6 @@ int get_bit(unsigned long n, unsigned int index)
 	if (index >= (sizeof(unsigned long int) * CHAR_BIT))
 		return (-1);/* index val is invalid */
 
-	r = (n & mask) ? 1 : 0;/* check the bit val */
+	r = ((n & mask) == 0) ? 1 : 0;/* check the bit val */
 	return (r);
 }
