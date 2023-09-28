@@ -14,7 +14,7 @@ void print_binary(unsigned long n)
 
 
 	if (n == 0)
-		write(1, "0", 1);
+		_putchar('0');
 
 	/* create a bit field */
 	mask = 1UL << (sizeof(unsigned long) * CHAR_BIT - 1);
@@ -25,11 +25,11 @@ void print_binary(unsigned long n)
 	{
 		if (n & mask)
 		{
-			write(1, "1", 1); /* if both match and return true */
+			_putchar('1');
 			bit = 1;
 		}
 		else if (bit) /* otherwise set the val to false */
-			write(1, "0", 1);
+			_putchar('0');
 		mask >>= 1; /* shift one bit right */
 	}
 }
