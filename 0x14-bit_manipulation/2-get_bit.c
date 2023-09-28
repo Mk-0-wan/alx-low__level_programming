@@ -11,7 +11,8 @@ int get_bit(unsigned long n, unsigned int index)
 {
 	unsigned int r;
 
-	if ((1 << index) == 0) /* set a bit field according to index */
+	/* set a bit field according to index */
+	if (index >= (sizeof(unsigned long int) * CHAR_BIT) || (1 << index) == 0)
 		return (-1);/* index val is invalid */
 
 	r = (n & (1 << index)) ? 1 : 0;/* check the bit val */
