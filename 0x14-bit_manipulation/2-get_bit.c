@@ -9,12 +9,15 @@
  */
 int get_bit(unsigned long n, unsigned int index)
 {
-	unsigned int r;
+	unsigned long int mask = 1;
+	int r;
+
 
 	/* set a bit field according to index */
-	if (index >= (sizeof(unsigned long int) * CHAR_BIT))
+	mask <<= index;
+	if (mask == 0 || index >= (sizeof(unsigned long int) * CHAR_BIT))
 		return (-1);/* index val is invalid */
 
-	r = (n & (1 << index)) ? 1 : 0;/* check the bit val */
+	r = (n & mask) ? 1 : 0;/* check the bit val */
 	return (r);
 }
