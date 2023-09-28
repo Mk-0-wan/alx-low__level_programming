@@ -4,6 +4,7 @@
  * set_bit - setting bits at a given position
  * @n: integer to get the check the bit from
  * @index: position of the bit
+ * Return: 1 on success, -1 on failure
  */
 int set_bit(unsigned long *n, unsigned int index)
 {
