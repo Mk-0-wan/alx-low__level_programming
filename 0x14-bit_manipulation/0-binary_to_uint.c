@@ -56,14 +56,17 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int rem = 0;
 	unsigned int bin = 0;
 	int i = 0;
-	char *local = (char *)b;
+	char *local;
 
 
-	if (!local)
+	if (!b)
 		return (0);
+
+	local = (char *)b;
+
 	while (local[i] != '\0')
 	{
-		if (local[i] != '1' &&  local[i] != '0')
+		if (local[i] != '1' && local[i] != '0')
 			return (0);
 
 		else
