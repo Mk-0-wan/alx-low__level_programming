@@ -84,15 +84,3 @@ unsigned int binary_to_uint(const char *b)
 	}
 	return (dec);
 }
-
-int main(void)
-{
-	ui n;
-
-	n = binary_to_uint("11111111111111111111111111111111");
-	printf("%u\n", n);
-	printf("%u\n", UINT_MAX);
-	n = binary_to_uint("10111010011001101");
-	printf("%u\n", n);
-	return (0);
-}
