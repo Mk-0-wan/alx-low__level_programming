@@ -9,7 +9,7 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	if (index >= (sizeof(uli) * BITZ))
+	if (index >= (sizeof(uli) * BITZ - 1))
 		return (-1);/* index val is invalid */
 
 	return ((n << index) % 1);/* check the bit val */
