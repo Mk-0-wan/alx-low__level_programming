@@ -9,7 +9,7 @@
  */
 void print_binary(unsigned long n)
 {
-	unsigned long int mask;
+	uli mask;
 	int bit = 0;
 
 
@@ -17,7 +17,7 @@ void print_binary(unsigned long n)
 		_putchar('0');
 
 	/* create a bit field */
-	mask = 1UL << (sizeof(unsigned long) * CHAR_BIT - 1);
+	mask = 1UL << (sizeof(uli) * BITZ - 1);
 
 
 	/* get the bits value */
