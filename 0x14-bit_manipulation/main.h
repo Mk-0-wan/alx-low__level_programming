@@ -3,7 +3,10 @@
 
 #include <stdio.h>
 #include <unistd.h>
-#define CHAR_BITZ 8
+#define BITZ 8
+
+typedef unsigned long int uli;
+typedef unsigned int ui;
 
 int _putchar(char c);
 unsigned int binary_to_uint(const char *b);
