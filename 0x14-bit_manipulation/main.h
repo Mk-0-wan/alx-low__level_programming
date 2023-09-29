@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <unistd.h>
-#define CHAR_BIT 8
+#define CHAR_BITZ 8
 
 int _putchar(char c);
 unsigned int binary_to_uint(const char *b);
