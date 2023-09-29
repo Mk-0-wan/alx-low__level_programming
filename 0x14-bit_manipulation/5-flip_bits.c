@@ -9,9 +9,9 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned int bits_to_flip = 0;
+	 ui bits_to_flip = 0;
 	/* exclusive or of the two int's */
-	unsigned long int x0r_val = (n ^ m);
+	uli x0r_val = (n ^ m);
 
 	while (x0r_val > 0) /* making sure all the bits value are used up */
 	{
