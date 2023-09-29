@@ -1,4 +1,5 @@
 #include "main.h"
+#include <limits.h>
 
 /**
  * _pow_recursion - replica of the pow function in c
@@ -6,10 +7,10 @@
  * @y: value holding the power
  * Return: an int holding the power value
  */
-int _pow_recursion(int x, int y)
+uli _pow_recursion(uli x, uli y)
 {
-	if (y < 0) /* both exit points at -1 and 1*/
-		return (-1);
+	/*if (y < 0)  both exit points at -1 and 1*/
+		/*return (-1);*/
 
 	if (y == 0)
 		return (1);
@@ -23,10 +24,10 @@ int _pow_recursion(int x, int y)
  * @str: string value passed
  * Return: the int value from a string
  */
-int _atoi(char *str)
+uli _atoi(char *str)
 {
 	int sign = 1, i = 0;
-	unsigned int result = 0;
+	uli result = 0;
 
 	while (!(str[i] <= '9' && str[i] >= '0') && str[i] != '\0')
 	{
@@ -51,11 +52,11 @@ int _atoi(char *str)
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int dec = 0;
-	unsigned int pos = 0;
-	unsigned int rem = 0;
-	unsigned int bin = 0;
-	int i = 0;
+	uli dec = 0;
+	uli pos = 0;
+	uli rem = 0;
+	uli bin = 0;
+	uli i = 0;
 	char *local;
 
 
@@ -82,4 +83,16 @@ unsigned int binary_to_uint(const char *b)
 		pos++;
 	}
 	return (dec);
+}
+
+int main(void)
+{
+	ui n;
+
+	n = binary_to_uint("11111111111111111111111111111111");
+	printf("%u\n", n);
+	printf("%u\n", UINT_MAX);
+	n = binary_to_uint("10111010011001101");
+	printf("%u\n", n);
+	return (0);
 }
