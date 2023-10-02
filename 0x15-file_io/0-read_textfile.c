@@ -1,7 +1,4 @@
 #include "main.h"
-#include <stddef.h>
-#include <stdio.h>
-#include <unistd.h>
 
 /**
  * read_textfile - read a text file and output its content to the STDOUT_FILENO
@@ -12,7 +9,7 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fd, i = 0;
-	ssize_t size_of_read = 0, size_of_write = 0, ret = 0;
+	int size_of_read = 0, size_of_write = 0, ret = 0;
 	char *local_buffer = (char *)malloc(sizeof(char) * letters);
 
 	if (!filename || !local_buffer) /* check for empty buffers */
@@ -43,5 +40,5 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	ret = size_of_write;/* keep record of the last write system call */
 	free(local_buffer); /* avoid memory leaks */
 	close(fd); /* close the file fd after you are done using it.*/
-	return (ret);
+	return ((ssize_t)ret);
 }
