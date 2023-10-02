@@ -71,7 +71,7 @@ ssize_t write_file(char *local_buffer, int file_to, char **argv, ssize_t bytes)
  */
 int main(int argc, char *argv[])
 {
-	int file_from, file_to;
+	int file_from = -1, file_to = -1;
 	ssize_t bytes = 0;
 	char local_buffer[BUFFSIZE];
 
@@ -101,6 +101,8 @@ int main(int argc, char *argv[])
 			close_file(file_from);
 			exit(98);
 		}
+		else if (bytes == 0)
+			break;
 		if (write_file(local_buffer, file_to, &argv[2], bytes) < 0)
 		{
 			close_file(file_to);
