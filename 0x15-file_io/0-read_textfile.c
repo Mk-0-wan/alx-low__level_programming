@@ -10,7 +10,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fd, i = 0;
 	int size_of_read_write = 0, ret = 0;
-	char *local_buffer = (char *)malloc(sizeof(char) * letters);
+	char *local_buffer = malloc(sizeof(char) * letters);
 
 	if (!filename || !local_buffer || !letters) /* check for empty buffers */
 		return (0);
