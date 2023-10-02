@@ -38,8 +38,7 @@ ssize_t read_file(char *local_buffer, int file_from, char **argv)
 	if (n_bytes == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", *argv);
-		close_file(file_from);
-		exit(98);
+		return (-1);
 	}
 	return (n_bytes);
 }
@@ -59,8 +58,7 @@ ssize_t write_file(char *local_buffer, int file_to, char **argv, ssize_t bytes)
 	if (bytes_to_write == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", *argv);
-		close_file(file_to);
-		exit(99);
+		return (-1);
 	}
 	return (bytes_to_write);
 }
@@ -81,17 +79,12 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp_file_from file_to\n");
 		exit(97);
 	}
-
 	file_from = open(argv[1], O_RDONLY);
 	if (file_from < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-
-	bytes = read_file(local_buffer, file_from, &argv[1]);
-	close_file(file_from);
-
 	file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
 	if (file_to < 0)
 	{
@@ -99,8 +92,22 @@ int main(int argc, char *argv[])
 		close_file(file_from);
 		exit(99);
 	}
-
-	write_file(local_buffer, file_to, &argv[2], bytes);
+	while ((bytes = read_file(local_buffer, file_from, &argv[1])))
+	{
+		if (bytes < 0)
+		{
+			close_file(file_from);
+			close_file(file_to);
+			exit(98);
+		}
+		if (write_file(local_buffer, file_to, &argv[2], bytes) < 0)
+		{
+			close_file(file_from);
+			close_file(file_to);
+			exit(99);
+		}
+	}
+	close_file(file_from);
 	close_file(file_to);
 	return (0);
 }
