@@ -12,7 +12,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	int size_of_read = 0, size_of_write = 0, ret = 0;
 	char *local_buffer = (char *)malloc(sizeof(char) * letters);
 
-	if (!filename || !local_buffer) /* check for empty buffers */
+	if (!filename || !local_buffer || letters == 0) /* check for empty buffers */
 		return (0);
 
 	fd = open(filename, O_RDONLY);/* read only mode */
