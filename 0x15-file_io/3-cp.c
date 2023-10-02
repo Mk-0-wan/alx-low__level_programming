@@ -13,11 +13,11 @@
  * @argv: arguments list
  * Return: number of bytes read.
  */
-int read_file(char **local_buffer, int file_from, char **argv)
+int read_file(char *local_buffer, int file_from, char **argv)
 {
 	int n_bytes = 0;
 
-	n_bytes = read(file_from, *local_buffer, BUFFSIZE);
+	n_bytes = read(file_from, local_buffer, BUFFSIZE);
 	if (n_bytes == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", *argv);
@@ -33,11 +33,11 @@ int read_file(char **local_buffer, int file_from, char **argv)
  * @bytes: number of bytes to write
  * Return: number of bytes read.
  */
-int write_file(char **local_buffer, int file_to, char **argv, int bytes)
+int write_file(char *local_buffer, int file_to, char **argv, int bytes)
 {
 	int bytes_to_write = 0;
 
-	bytes_to_write = write(file_to, *local_buffer, bytes);
+	bytes_to_write = write(file_to, local_buffer, bytes);
 	if (bytes_to_write == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", *argv);
@@ -72,16 +72,13 @@ int main(int argc, char *argv[])
 {
 	int file_from, file_to;
 	int bytes = 0;
-	char *local_buffer = malloc(BUFFSIZE);
+	char local_buffer[1024];
 
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp_file_from file_to\n");
 		exit(97);
 	}
-
-	if (!local_buffer)
-		return (1);
 
 	file_from = open(argv[1], O_RDONLY);
 	if (file_from < 0)
@@ -90,7 +87,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	bytes = read_file(&local_buffer, file_from, &argv[1]);
+	bytes = read_file(local_buffer, file_from, &argv[1]);
 	close_file(file_from);
 
 	file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
@@ -99,8 +96,7 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
 		exit(99);
 	}
-	write_file(&local_buffer, file_to, &argv[2], bytes);
+	write_file(local_buffer, file_to, &argv[2], bytes);
 	close_file(file_to);
-	free(local_buffer);
 	return (0);
 }
