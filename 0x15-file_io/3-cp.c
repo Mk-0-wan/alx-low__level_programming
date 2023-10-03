@@ -58,7 +58,7 @@ ssize_t write_file(char *local_buffer, int file_to, char **argv, ssize_t bytes)
 	bytes_to_write = write(file_to, local_buffer, bytes);
 	if (bytes_to_write == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", *argv);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", *argv);
 		return (-1);
 	}
 	return (bytes_to_write);
@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
 	file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
 	if (file_to < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		close_file(file_from);
 		exit(99);
 	}
