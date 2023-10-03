@@ -12,7 +12,7 @@
  * @fd: file descriptor
  * Return: void
  */
-int close_file(int fd)
+void close_file(int fd)
 {
 	int cls = -1;
 
@@ -20,9 +20,8 @@ int close_file(int fd)
 	if (cls == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		return (-1);
+		exit(100);
 	}
-	return (cls);
 }
 /**
  * read_file - going to read the original fd and make all the checks
@@ -110,14 +109,7 @@ int main(int argc, char *argv[])
 			exit(99);
 		}
 	}
-	bytes = close_file(file_to);
-	if (bytes == -1)
-	{
-		close_file(file_from);
-		exit(100);
-	}
-	bytes = close_file(file_from);
-	if (bytes == -1)
-		exit(100);
+	close_file(file_to);
+	close_file(file_from);
 	return (0);
 }
