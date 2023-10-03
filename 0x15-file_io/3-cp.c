@@ -100,8 +100,6 @@ int main(int argc, char *argv[])
 			close_file(file_from);
 			exit(98);
 		}
-		else if (bytes == 0)
-			break;
 		if (write_file(local_buffer, file_to, &argv[2], bytes) < 0)
 		{
 			close_file(file_to);
