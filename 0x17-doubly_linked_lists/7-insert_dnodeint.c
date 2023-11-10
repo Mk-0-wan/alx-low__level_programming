@@ -31,10 +31,11 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	dlistint_t *inset_node = NULL;
 	unsigned int iter = 1;
 
-	if (!*h || !h)
-		return (NULL);
-
 	inset_node = create_node(n);
+
+	if (!*h || !h)
+		return (inset_node);
+
 	if (idx == 0)
 	{
 		inset_node->next = *h;
