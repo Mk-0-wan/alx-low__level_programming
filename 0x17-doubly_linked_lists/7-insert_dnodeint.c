@@ -44,24 +44,26 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		*h = inset_node;
 		return (inset_node);
 	}
-
 	while (current)
 	{
 		if (iter == idx)
 		{
-			inset_node->next = current->next;
-			current->next = inset_node;
-			inset_node->prev = current;
+			if (!current->next)
+			{
+				current->next = inset_node;
+				inset_node->prev = current;
+			}
+			else
+			{
+				inset_node->next = current->next;
+				current->next = inset_node;
+				current->next->prev = inset_node;
+				inset_node->prev = current;
+			}
 			return (inset_node);
 		}
 		current = current->next;
 		iter++;
-	}
-	if (iter == idx)
-	{
-		current->next = inset_node;
-		inset_node->prev = current;
-		return (inset_node);
 	}
 	free(inset_node);
 	return (NULL);
