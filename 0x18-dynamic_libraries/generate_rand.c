@@ -7,7 +7,7 @@
 int rand(void)
 {
 	static int iterations_of_rand;
-	static int prdef_values[] = {9, 8, 10, 24, 75, 9};
+	static int prdef_values[] = {8, 8, 7, 9, 23, 74};
 
 	iterations_of_rand = 0;
 	return ((iterations_of_rand < 6) ? prdef_values[iterations_of_rand++] : 0);
