@@ -8,6 +8,7 @@
 
 /*aliases*/
 typedef unsigned long int ul;
+typedef unsigned char uc;
 /**
  * struct hash_node_s - Node of a hash table
  *
@@ -39,5 +40,7 @@ typedef struct hash_table_s
 
 /* Function prototypes */
 hash_table_t *hash_table_create(ul size);
-ul hash_djb2(const unsigned char *str);
+ul hash_djb2(const uc *str);
+ul key_index(const uc *key, ul size);
+
 #endif
