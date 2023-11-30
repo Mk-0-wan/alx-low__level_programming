@@ -23,7 +23,7 @@ hash_table_t *hash_table_create(ul size)
 	 * will need to allocate memory space to it
 	 */
 	new_ht->size = size;
-	new_ht->array = calloc(new_ht->size, sizeof(hash_node_t *));
+	new_ht->array = malloc(new_ht->size * sizeof(hash_node_t *));
 
 	if (!new_ht->array)
 		return (NULL);
