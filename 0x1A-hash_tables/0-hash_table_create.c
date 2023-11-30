@@ -23,11 +23,10 @@ hash_table_t *hash_table_create(ul size)
 	 * will need to allocate memory space to it
 	 */
 	new_ht->size = size;
-	new_ht->array = malloc(new_ht->size * sizeof(hash_node_t *));
+	new_ht->array = malloc(sizeof(hash_node_t *) * new_ht->size);
 
 	if (!new_ht->array)
 		return (NULL);
-
 
 	/* setting each array value to NULL */
 	while (iter < new_ht->size)
