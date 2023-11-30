@@ -12,7 +12,7 @@
 ul hash_djb2(const unsigned char *str)
 {
 	int ch;
-	ul hashed;
+	ul hashed = 5381;
 
 	while ((ch = *str++))
 		hashed = (hashed * 33) + ch;
