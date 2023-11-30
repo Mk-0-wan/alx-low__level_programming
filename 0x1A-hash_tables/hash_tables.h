@@ -39,4 +39,5 @@ typedef struct hash_table_s
 
 /* Function prototypes */
 hash_table_t *hash_table_create(ul size);
+ul hash_djb2(const unsigned char *str);
 #endif
