@@ -17,15 +17,16 @@ hash_table_t *hash_table_create(ul size)
 
 	if (!new_ht)
 		return (NULL);
+
 	/**
 	 * for each array in the hash table we
 	 * will need to allocate memory space to it
 	 */
-	new_ht->array = calloc(size, sizeof(hash_node_t **));
+	new_ht->size = size;
+	new_ht->array = calloc(new_ht->size, sizeof(hash_node_t *));
 
 	if (!new_ht->array)
 	{
-		free(new_ht);
 		return (NULL);
 	}
 
