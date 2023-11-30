@@ -26,12 +26,11 @@ hash_table_t *hash_table_create(ul size)
 	new_ht->array = calloc(new_ht->size, sizeof(hash_node_t *));
 
 	if (!new_ht->array)
-	{
 		return (NULL);
-	}
+
 
 	/* setting each array value to NULL */
-	while (++iter < size)
+	while (++iter < new_ht->size)
 		new_ht->array[iter] = NULL;
 
 	return (new_ht);
