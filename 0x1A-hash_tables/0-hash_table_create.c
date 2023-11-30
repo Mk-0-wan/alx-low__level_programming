@@ -31,11 +31,8 @@ hash_table_t *hash_table_create(ul size)
 	}
 
 	/* setting each array value to NULL */
-	while (iter < new_ht->size - 1)
-	{
+	while (++iter < new_ht->size - 1)
 		new_ht->array[iter] = NULL;
-		iter++;
-	}
 
 	return (new_ht);
 }
