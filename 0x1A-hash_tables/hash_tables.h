@@ -46,7 +46,8 @@ ul key_index(const uc *key, ul size);
 int hash_table_set(hash_table_t *ht, const char *key, const char *value);
 hash_node_t *buckets(const char *key, const char *value);
 char *hash_table_get(const hash_table_t *ht, const char *key);
+void hash_table_print(const hash_table_t *ht);
 void free_all_buckets(hash_node_t *buckets);
 void free_hash_table(hash_table_t *ht);
-
+void hash_table_print(const hash_table_t *ht);
 #endif
