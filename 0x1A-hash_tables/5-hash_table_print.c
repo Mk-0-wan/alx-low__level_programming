@@ -15,7 +15,7 @@ void hash_table_print(const hash_table_t *ht)
 		printf("{}\n");
 
 	printf("{");
-	while (++iter < ht->size - 1)
+	while (++iter < ht->size)
 	{
 		buckets = ht->array[iter];
 		while (buckets)
