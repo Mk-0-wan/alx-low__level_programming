@@ -14,13 +14,14 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *bucket = NULL;
 	hash_node_t *current = NULL;
-	hash_node_t *temp = NULL;
 	ul indx;
 
-	if (!key)
+	if (!key || !ht || (!strcmp(key, "")))
 		return (0);
 	/* create a new bucket */
 	bucket = buckets(key, value);
+	if (!bucket)
+		return (0);
 	/* create a new hash key */
 	indx = key_index((const unsigned char *)key, ht->size);
 	/* check if the index already exists */
@@ -38,14 +39,14 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		if (!strcmp(current->key, key))
 		{/* Updating the original value */
+			free(bucket);
 			free(current->value);
 			current->value = strdup(value);
 		}
 		else
 		{/*check if there is a collision*/
-			temp = current->next;
-			current->next = bucket;
-			bucket->next = temp;
+			bucket->next = current;
+			current = bucket;
 		}
 		return (1);
 	}
@@ -68,6 +69,8 @@ hash_node_t *buckets(const char *key, const char *value)
 	bucket->key = strdup(key);
 	bucket->value = strdup(value);
 	bucket->next = NULL;
+	if (!bucket->key || !bucket->value)
+		return (NULL);
 	/* don't forget to free all of them once done using them */
 	return (bucket);
 }
