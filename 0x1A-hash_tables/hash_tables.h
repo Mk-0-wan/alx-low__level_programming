@@ -2,6 +2,7 @@
 #define __HASH_TABLES__
 
 /* C standard library */
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h> /* for printf */
 #include <stdlib.h> /* for malloc */
 #include <string.h> /* for strcpy */
@@ -44,6 +45,7 @@ ul hash_djb2(const uc *str);
 ul key_index(const uc *key, ul size);
 int hash_table_set(hash_table_t *ht, const char *key, const char *value);
 hash_node_t *buckets(const char *key, const char *value);
+char *hash_table_get(const hash_table_t *ht, const char *key);
 void free_all_buckets(hash_node_t *buckets);
 void free_hash_table(hash_table_t *ht);
 
