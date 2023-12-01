@@ -1,6 +1,7 @@
 #include "hash_tables.h"
 #include <stdlib.h>
 #include <string.h>
+
 /**
  * hash_table_set - adds or updates the hash table with new
  * members
@@ -13,6 +14,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *bucket = NULL;
 	hash_node_t *current = NULL;
+	hash_node_t *temp = NULL;
 	ul indx;
 
 	bucket = buckets(key, value);
@@ -25,13 +27,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (!current)
 	{
-		if (ht->size < indx)
-		{
-			free_all_buckets(current);
-			free_all_buckets(bucket);
-			free_hash_table(ht);
+		if (ht->size <= indx)
 			return (0);
-		}
+		/* assign new value to that array indx */
 		ht->array[indx] = bucket;
 		return (1);
 	}
@@ -39,12 +37,14 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		if (!strcmp(current->key, key))
 		{/* Updating the original value */
-			strcpy(current->value, value);
+			free(current->value);
+			current->value = strdup(value);
 		}
 		else
 		{/*check if there is a collision*/
-			bucket->next = current;
-			current = bucket;
+			temp = current->next;
+			current->next = bucket;
+			bucket->next = temp;
 		}
 		return (1);
 	}
@@ -64,12 +64,9 @@ hash_node_t *buckets(const char *key, const char *value)
 	if (!bucket)
 		return (NULL);
 
-	bucket->key = malloc(strlen(key) + 1); /* for the null terminator */
-	bucket->value = malloc(strlen(value) + 1); /* for the null terminator */
+	bucket->key = strdup(key);
+	bucket->value = strdup(value);
 	bucket->next = NULL;
-
-	strcpy(bucket->key, key);
-	strcpy(bucket->value, value);
 	/* don't forget to free all of them once done using them */
 	return (bucket);
 }
