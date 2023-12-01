@@ -12,9 +12,8 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *bucket = NULL;
 	char *tmp;
-	hash_node_t *current = NULL;
+	hash_node_t *bucket = NULL, *current = NULL;
 	ul indx;
 
 	if (!key || !ht || !*key || !ht->array || !value)
@@ -31,22 +30,25 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		if (!strcmp(current->key, key))
-		{/* Updating the original value */
-			tmp = strdup(value);
-			if (!tmp)
-				return (0);
-			free(current->value);
-			current->value = tmp;
+		while (current)
+		{
+			if (!strcmp(current->key, key))
+			{/* Updating the original value */
+				tmp = strdup(value);
+				if (!tmp)
+					return (0);
+				free(current->value);
+				current->value = tmp;
+				return (1);
+			}
+			current = current->next;
 		}
-		else
-		{/*check if there is a collision*/
-			bucket = buckets(key, value);
-			if (!bucket)
-				return (0);
-			bucket->next = current;
-			ht->array[indx] = bucket;
-		}
+		/*check if there is a collision*/
+		bucket = buckets(key, value);
+		if (!bucket)
+			return (0);
+		bucket->next = ht->array[indx];
+		ht->array[indx] = bucket;
 		return (1);
 	}
 	return (0); /* fail */
