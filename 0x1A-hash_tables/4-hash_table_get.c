@@ -8,22 +8,13 @@
  */
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
-	/**
-	 * use the key to get the actual value
-	 * use the hash function to get the actual key of the value
-	 * create a pointer to the bucket we are going to retrive from
-	 * the index
-	 * return a char pointer to the new value
-	 */
-
-	char *value;
 	hash_node_t *bucket = NULL;
 	ul indx = 0;
 
 	if (!ht || !key || strcmp(key, ""))
 		return (NULL);
 
-	indx = key_index((unsigned char *)key, ht->size);
+	indx = key_index((const unsigned char *)key, ht->size);
 	if (ht->size < indx)
 		return (NULL);
 
@@ -36,7 +27,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	}
 
 	if (!strcmp(bucket->key, key))
-		return (value = strdup(bucket->value));
+		return (bucket->value);
 
 	return (NULL);
 }
