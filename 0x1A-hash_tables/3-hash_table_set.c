@@ -16,7 +16,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *current = NULL;
 	ul indx;
 
-	if (!key || !ht || (!strcmp(key, "")))
+	if (!key || !ht || (!strcmp(key, "")) || !value)
 		return (0);
 	/* create a new bucket */
 	bucket = buckets(key, value);
