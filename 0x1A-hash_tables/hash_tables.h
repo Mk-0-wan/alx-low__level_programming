@@ -42,5 +42,8 @@ typedef struct hash_table_s
 hash_table_t *hash_table_create(ul size);
 ul hash_djb2(const uc *str);
 ul key_index(const uc *key, ul size);
+int hash_table_set(hash_table_t *ht, const char *key, const char *value);
+void free_all_buckets(hash_node_t *buckets);
+void free_hash_table(hash_table_t *ht);
 
 #endif
