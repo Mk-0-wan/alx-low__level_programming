@@ -22,36 +22,26 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	indx = key_index((const unsigned char *)key, ht->size);
 	/* check if the index already exists */
 	current = ht->array[indx];
-	if (!current)
+	while (current)
 	{
-		/* assign new value to that array indx */
-		ht->array[indx] = bucket;
-		return (1);
-	}
-	else
-	{
-		while (current)
-		{
-			if (!strcmp(current->key, key))
-			{/* Updating the original value */
-				tmp = strdup(value);
-				if (!tmp)
-					return (0);
-				free(current->value);
-				current->value = tmp;
-				return (1);
-			}
-			current = current->next;
+		if (!strcmp(current->key, key))
+		{/* Updating the original value */
+			tmp = strdup(value);
+			if (!tmp)
+				return (0);
+			free(current->value);
+			current->value = tmp;
+			return (1);
 		}
-		/*check if there is a collision*/
-		bucket = buckets(key, value);
-		if (!bucket)
-			return (0);
-		bucket->next = ht->array[indx];
-		ht->array[indx] = bucket;
-		return (1);
+		current = current->next;
 	}
-	return (0); /* fail */
+	/*check if there is a collision*/
+	bucket = buckets(key, value);
+	if (!bucket)
+		return (0);
+	bucket->next = ht->array[indx];
+	ht->array[indx] = bucket;
+	return (1);
 }
 /**
  * buckets - creates a new elements in the hash table
