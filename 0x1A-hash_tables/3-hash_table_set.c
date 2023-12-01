@@ -17,12 +17,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *temp = NULL;
 	ul indx;
 
+	if (!key)
+		return (0);
+	/* create a new bucket */
 	bucket = buckets(key, value);
-
-	/* calculate the hashed index using the hash function */
+	/* create a new hash key */
 	indx = key_index((const unsigned char *)key, ht->size);
-
-	 /* check if the index already exists */
+	/* check if the index already exists */
 	current = ht->array[indx];
 
 	if (!current)
