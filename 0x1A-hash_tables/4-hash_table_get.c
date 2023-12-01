@@ -8,17 +8,20 @@
  */
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
+	char *value;
 	hash_node_t *bucket = NULL;
 	ul indx = 0;
 
-	if (!ht || !key || strcmp(key, ""))
+	if (!ht || !key || !strcmp(key, ""))
 		return (NULL);
 
 	indx = key_index((const unsigned char *)key, ht->size);
-	if (ht->size < indx)
+	if (ht->size <= indx)
 		return (NULL);
 
 	bucket = ht->array[indx];
+	if (!bucket)
+		return (NULL);
 
 	if (bucket->next)
 	{
@@ -27,7 +30,11 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	}
 
 	if (!strcmp(bucket->key, key))
-		return (bucket->value);
-
+	{
+		value = strdup(bucket->value);
+		if (!value)
+			printf("Something is wrong\n");
+		return (value);
+	}
 	return (NULL);
 }
