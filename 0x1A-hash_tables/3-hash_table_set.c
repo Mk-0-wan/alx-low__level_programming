@@ -27,7 +27,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (!current)
 	{
-		if (ht->size <= indx)
+		if (ht->size < indx)
 			return (0);
 		/* assign new value to that array indx */
 		ht->array[indx] = bucket;
