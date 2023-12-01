@@ -20,7 +20,7 @@ void hash_table_print(const hash_table_t *ht)
 		buckets = ht->array[iter];
 		while (buckets)
 		{
-			printf("'%s' : '%s'", buckets->key, buckets->value);
+			printf("'%s': '%s'", buckets->key, buckets->value);
 			/* separate nodes in the buckets key value pairs */
 			if (buckets->next)
 				printf(", ");
