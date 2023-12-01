@@ -12,25 +12,19 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *bucket = NULL;
+	hash_node_t *bucket = NULL
+	char *tmp;
 	hash_node_t *current = NULL;
 	ul indx;
 
-	if (!key || !ht || (!strcmp(key, "")) || (!key && !value))
-		return (0);
-	/* create a new bucket */
-	bucket = buckets(key, value);
-	if (!bucket)
+	if (!key || !ht || !*key || !ht->array || !value)
 		return (0);
 	/* create a new hash key */
 	indx = key_index((const unsigned char *)key, ht->size);
 	/* check if the index already exists */
 	current = ht->array[indx];
-
 	if (!current)
 	{
-		if (ht->size < indx)
-			return (0);
 		/* assign new value to that array indx */
 		ht->array[indx] = bucket;
 		return (1);
@@ -39,14 +33,19 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		if (!strcmp(current->key, key))
 		{/* Updating the original value */
-			free(bucket);
+			tmp = strdup(value);
+			if (!tmp)
+				return (0);
 			free(current->value);
-			current->value = strdup(value);
+			current->value = tmp;
 		}
 		else
 		{/*check if there is a collision*/
+			bucket = buckets(key, value);
+			if (!bucket)
+				return (0);
 			bucket->next = current;
-			current = bucket;
+			ht->array[indx] = bucket;
 		}
 		return (1);
 	}
