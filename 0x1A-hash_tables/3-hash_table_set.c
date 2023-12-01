@@ -66,10 +66,19 @@ hash_node_t *buckets(const char *key, const char *value)
 		return (NULL);
 
 	bucket->key = strdup(key);
-	bucket->value = strdup(value);
-	bucket->next = NULL;
-	if (!bucket->key || !bucket->value)
+	if (!bucket->key)
+	{
+		free(bucket);
 		return (NULL);
+	}
+	bucket->value = strdup(value);
+	if (!bucket->value)
+	{
+		free(bucket->key);
+		free(bucket);
+		return (NULL);
+	}
+	bucket->next = NULL;
 	/* don't forget to free all of them once done using them */
 	return (bucket);
 }
