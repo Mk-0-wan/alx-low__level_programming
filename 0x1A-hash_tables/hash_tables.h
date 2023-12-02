@@ -77,6 +77,13 @@ typedef struct shash_table_s
 	shash_node_t *stail;
 } shash_table_t;
 
+/* PHP */
+void shash_table_print(const shash_table_t *ht);
+void shash_table_delete(shash_table_t *ht);
+void free_shash_nodes(shash_node_t *head);
+char *shash_table_get(const shash_table_t *ht, const char *key);
+shash_node_t *sbuckets(const char *key, const char *value);
+
 /* Function prototypes */
 void hash_table_delete(hash_table_t *ht);
 hash_table_t *hash_table_create(ul size);
@@ -86,7 +93,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value);
 hash_node_t *buckets(const char *key, const char *value);
 char *hash_table_get(const hash_table_t *ht, const char *key);
 void hash_table_print(const hash_table_t *ht);
-void free_all_buckets(hash_node_t *buckets);
 void free_hash_table(hash_table_t *ht);
 void hash_table_print(const hash_table_t *ht);
 void free_node_items(hash_node_t *bucket);
