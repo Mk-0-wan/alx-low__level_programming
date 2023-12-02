@@ -11,6 +11,8 @@ void hash_table_print(const hash_table_t *ht)
 	ul iter = 0, flag = 0;
 	hash_node_t *buckets = NULL;
 
+	if (!ht || !ht->array || ht->size == 0)
+		return;
 	printf("{");
 	while (iter < ht->size)
 	{
