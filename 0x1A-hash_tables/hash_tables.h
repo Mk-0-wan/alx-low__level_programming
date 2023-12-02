@@ -40,6 +40,7 @@ typedef struct hash_table_s
 } hash_table_t;
 
 /* Function prototypes */
+void hash_table_delete(hash_table_t *ht);
 hash_table_t *hash_table_create(ul size);
 ul hash_djb2(const uc *str);
 ul key_index(const uc *key, ul size);
@@ -50,4 +51,7 @@ void hash_table_print(const hash_table_t *ht);
 void free_all_buckets(hash_node_t *buckets);
 void free_hash_table(hash_table_t *ht);
 void hash_table_print(const hash_table_t *ht);
+void free_node_items(hash_node_t *bucket);
+void hash_table_delete(hash_table_t *ht);
+void free_hash_nodes(hash_node_t *head);
 #endif
