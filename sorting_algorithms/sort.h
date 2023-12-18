@@ -3,7 +3,14 @@
 
 #define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
-#define Swap2(a, b) do { if ((a) != (b)) { (b) ^= (a) ^= (b); (a) ^= (b); } } while(0)
+#define Swap2(a, b) \
+	do {\
+		if ((a) != (b))\
+		{\
+			(b) ^= (a) ^= (b);\
+			(a) ^= (b);\
+		} \
+	} while (0)
 
 typedef unsigned long int ul;
 /**
@@ -15,9 +22,9 @@ typedef unsigned long int ul;
  */
 typedef struct listint_s
 {
-    const int n;
-    struct listint_s *prev;
-    struct listint_s *next;
+	const int n;
+	struct listint_s *prev;
+	struct listint_s *next;
 } listint_t;
 
 /*Builtin header files */
