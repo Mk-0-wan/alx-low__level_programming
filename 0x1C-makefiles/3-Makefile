@@ -9,8 +9,8 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
-%.o : %.c m.h
-	$(CC)	-c -o $@ $< 
+%.o : %.c %.h
+	$(CC)	-c -o $@ $^ 
 
 clean :
 	$(RM) *~ *.swap $(NAME)
