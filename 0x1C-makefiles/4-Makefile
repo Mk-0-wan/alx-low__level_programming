@@ -2,7 +2,7 @@ CC = gcc
 SRC = main.c school.c 
 OBJ = $(SRC:.c=.o)
 NAME = school
-RM = rm
+RM = rm -f
 CFLAGS = -Wall -Werror -Wextra -pedantic
 
 all : $(NAME)
@@ -10,8 +10,8 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
-%.o : %.c m.h
-	$(CC) $(CFLAGS)   -c -o $@ $<
+%.o : %.c %.h
+	$(CC) $(CFLAGS)   -c -o $@ $^
 
 .PHONY : clean oclean fclean re
 
