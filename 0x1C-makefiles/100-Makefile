@@ -3,7 +3,7 @@ SRC = main.c school.c
 OBJ = $(SRC:.c=.o)
 NAME = school
 CFLAGS = -Wall -Werror -Wextra -pedantic
-COMPILE = $(CC) -Wall -Werror -Wextra -pedantic
+COMPILE = $(CC) $(CFLAGS) 
 
 all : m.h $(NAME)
 
