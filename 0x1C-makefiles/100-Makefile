@@ -5,7 +5,7 @@ NAME = school
 CFLAGS = -Wall -Werror -Wextra -pedantic
 COMPILE = $(CC) -Wall -Werror -Wextra -pedantic
 
-all : $(NAME)
+all : m.h $(NAME)
 
 $(NAME) : $(OBJ)
 	$(COMPILE) $^ -o $@
