@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# the Island Perimeter solution
+""" the Island Perimeter solution"""
 
 def island_perimeter(grid=list) -> int:
     """Island Perimeter Calculator
