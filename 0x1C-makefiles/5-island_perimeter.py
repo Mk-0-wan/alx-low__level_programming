@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ the Island Perimeter solution"""
 
+
 def island_perimeter(grid=list) -> int:
     """Island Perimeter Calculator
     Args:
@@ -31,15 +32,16 @@ def island_perimeter(grid=list) -> int:
             if grid[x][y] == 1:
                 count += 1
                 if y - 1 >= 0 and grid[x][y - 1] == 1:
-                        touch += 1
+                    touch += 1
                 if y + 1 < width and grid[x][y + 1] == 1:
-                        touch += 1
+                    touch += 1
                 if x + 1 < height and grid[x + 1][y] == 1:
-                        touch += 1
+                    touch += 1
                 if x - 1 >= 0 and grid[x - 1][y] == 1:
-                        touch += 1
+                    touch += 1
     total_perimeter = count * 4
     return (total_perimeter - touch)
+
 
 if __name__ == "__main__":
     grid = [
