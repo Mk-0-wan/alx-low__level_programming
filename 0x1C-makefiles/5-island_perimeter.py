@@ -28,7 +28,7 @@ def island_perimeter(grid=list) -> int:
     touch = 0
     for x in range(height):
         for y in range(width):
-            if grid[y][x] == 1:
+            if grid[x][y] == 1:
                 count += 1
                 if y - 1 >= 0 and grid[x][y - 1] == 1:
                         touch += 1
