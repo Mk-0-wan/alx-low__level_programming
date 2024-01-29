@@ -1,0 +1,166 @@
+# Mk bash configuration
+# ~/.bashrc
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Alias for term program
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias py="python3 -q"
+alias matrix="bash $HOME/scripts_/matrix.sh"
+alias vi="nvim"
+alias pi="nvim $HOME/.config/picom/picom.conf"
+alias wm="nvim $HOME/.config/i3/config"
+alias po="nvim $HOME/.config/polybar/config.ini"
+alias lv=level_deep
+alias update="git fetch && git pull"
+alias al="nvim $HOME/.config/alacritty/alacritty.yml"
+alias lgit="exa --long --header --inode --git"
+alias ls="exa --icons"
+alias vconf="nvim $HOME/.config/nvim/init.vim"
+alias rd="python3 $HOME/scripts_/py.py README.md "$1""
+alias mul="vi -O $@"
+alias gc="git checkout $1"
+alias xs="cd ~/work/simple_shell"
+alias make="bash $HOME/work/printf/run.sh"
+alias alx=task
+alias gt="bash $HOME/work/alx-low_level_programmings/0x0B-malloc_free/add.sh"
+alias apt="bash $HOME/work/alx-higher_level_programming/0x00-python-hello_world/gt"
+alias gts="bash $HOME/work/simple_shell/add.sh"
+alias x="bash $HOME/simple_shell2/simple_shell/x.sh"
+alias sh="cd $HOME/work/new/"
+alias alpy=new_task
+alias alp="cd $HOME/work/printf/"
+alias val="valgrind -s --leak-check=full --track-origins=yes --show-leak-kinds=all $1"
+alias no_vim="vim --noplugin"
+# made a function which list according to the number of level passed through as the second argument
+function level_deep {
+	exa --long --tree --level="${1:-1}"
+}
+function new_task {
+	if [ -z "$1" ]; then
+		echo "Please enter name of the new alx task"
+		return 1
+	fi
+	echo  "Prepping new task directory..."
+	cd $HOME/work/alx-higher_level_programming
+	sleep 1
+	mkdir $1 && cd $1
+	echo "Sir, To remind you Julien suggested we have really nice README file."
+	sleep 1
+	echo "setting up everything ready for you..."
+	sleep 1
+	rd "## $1"
+	echo "Done setting up sir, Good luck on you project (>.<)"
+}
+# Ask which directory you want to go
+function task {
+	echo -n "High, Low or project[xs, ] -> "
+	read dir
+	case $dir in
+		High)
+			cd "$HOME/work/alx-higher_level_programming" || return
+			;;
+		Low)
+			cd "$HOME/work/alx-low_level_programming" || return
+			;;
+		*)
+			echo "Invalid alx directory" || return 1
+			;;
+	esac
+	echo -n "Which task -> "
+	read tasks
+	cd $tasks
+}
+# get current branch in git repo
+function parse_git_branch() {
+	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+	if [ ! "${BRANCH}" == "" ]
+	then
+		STAT=`parse_git_dirty`
+		echo "[${BRANCH}${STAT}]"
+	else
+		echo ""
+	fi
+}
+
+# get current status of git repo
+function parse_git_dirty {
+	status=`git status 2>&1 | tee`
+	dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
+	untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
+	ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
+	newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
+	renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
+	deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
+	bits=''
+	if [ "${renamed}" == "0" ]; then
+		bits=">${bits}"
+	fi
+	if [ "${ahead}" == "0" ]; then
+		bits="*${bits}"
+	fi
+	if [ "${newfile}" == "0" ]; then
+		bits="+${bits}"
+	fi
+	if [ "${untracked}" == "0" ]; then
+		bits="?${bits}"
+	fi
+	if [ "${deleted}" == "0" ]; then
+		bits="x${bits}"
+	fi
+	if [ "${dirty}" == "0" ]; then
+		bits="!${bits}"
+	fi
+	if [ ! "${bits}" == "" ]; then
+		echo " ${bits}"
+	else
+		echo ""
+	fi
+}
+function nonzero_return() {
+	RETVAL=$?
+	[ $RETVAL -ne 0 ] && echo "$RETVAL"
+}
+export PS1="\W \[\e[31m\]\`nonzero_return\`\[\e[m\]\[\e[32m\]\`parse_git_branch\`\[\e[m\]   "
+bash $HOME/scripts_/readline.sh
+neofetch --ascii_distro ascii_distro
+
+sqlcap()
+{
+# The script capitalizes every preserved word in `sql`.
+# `${k^^}` syntax below to capitalize words.
+
+CMDS=('show' 'where' 'alter' 'select' 'create' 'update' 'delete' 'from' 'insert' 'join' 'distinct' 'set' 'convert' 'collate' 'database' 'table' 'exists')
+AGGREGATE=('sum' 'avg' 'case' 'count' 'limit' 'min' 'max' 'having')
+GROUPING=('as' 'is' 'group by' 'order by' 'with' 'and' 'or' 'null' 'to' 'not' 'if' 'desc' 'asc' 'character')
+# concatenate the arrays
+LIST=("${CMDS[@]}" "${AGGREGATE[@]}" "${GROUPING[@]}")
+
+if (("$#" == 0)); then
+    echo "No file provided!"
+    exit 1
+fi
+
+# by default iterates through arguments
+for f; do
+    if [ ! -e "$f" ]; then
+        echo -e "${COLOR_YELLOW}<$f>${RESET} ${COLOR_LIGHT_RED}doesn't exists!${RESET}"
+        continue
+    fi
+
+    # check for file extension
+    echo "$f" | grep -qE 'sql$'
+    exit_status="$?"
+
+    if (("$exit_status" != 0)); then
+        echo -e "${COLOR_LIGHT_RED}file name must end with ${COLOR_YELLOW}.sql${RESET}${RESET}"
+        exit 1
+    fi
+
+    for k in "${LIST[@]}"; do
+        sed -i "s@\b$k\b@${k^^}@g" "$f"
+    done
+done }
+export PATH="$PATH:~/bin"
