@@ -65,10 +65,14 @@ int btr(int *array, int T, int start, int end)
 
 	if (array[m] == T)
 	{
-		if (m == 0 || array[m - 1] != T)
-			return (m);
-		else
-			return (btr(array, T, start, m - 1));
+		Print(array, start, m);
+		if (array[m] == array[m - 1])
+		{
+			Print(array, m - 1, m);
+			m--;
+		}
+
+		return (m);
 	}
 	else if (array[m] < T)
 		return (btr(array, T, m + 1, end));
