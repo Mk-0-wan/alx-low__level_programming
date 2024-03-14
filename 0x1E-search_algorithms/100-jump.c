@@ -18,13 +18,12 @@ int jump_search(int *array, size_t size, int value)
 	if (!array || size == 0)
 		return (-1);
 
+	/* Starting checkpoint */
+	midpoint = floor(sqrt((int)size));
 	/* What if it's the first index */
+	printf("Value checked array[%d] = [%d]\n", last_val, array[last_val]);
 	if (array[last_val] == value)
 		return (last_val);
-
-	midpoint = floor(sqrt((int)size));
-	/* Starting checkpoint */
-	printf("Value checked array[%d] = [%d]\n", last_val, array[last_val]);
 	/* Finding the boundry using jump_search algo */
 	while (array[midpoint] < value && midpoint <= (int)size - 1)
 	{
