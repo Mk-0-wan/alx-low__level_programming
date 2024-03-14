@@ -39,7 +39,7 @@ int exponential_search(int *array, size_t size, int value)
 	if (!array || size == 0)
 		return (-1);
 
-	while (bound < (int)size && array[bound] < value)
+	while (bound < (int)size - 1 && array[bound] < value)
 	{
 		prev_bound = bound;
 		printf("Value checked array[%d] = [%d]\n", (int)bound, array[bound]);
