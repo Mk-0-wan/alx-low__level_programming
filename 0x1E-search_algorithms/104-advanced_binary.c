@@ -61,7 +61,6 @@ int btr(int *array, int T, int start, int end)
 
 	Print(array, start, end);
 
-
 	if (array[m] == T)
 	{
 		if (m > start  && array[m] == array[m - 1] && T == array[m - 1])
@@ -69,10 +68,12 @@ int btr(int *array, int T, int start, int end)
 
 		return (m);
 	}
-	else if (array[m] < T)
+
+	if (array[m] < T)
 		return (btr(array, T, m + 1, end));
 	else
-		return (btr(array, T, start, m - 1));
+		return (btr(array, T, start, m));
+
 
 	return (-1);
 }
