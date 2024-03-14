@@ -13,42 +13,42 @@
  */
 int jump_search(int *array, size_t size, int value)
 {
-	double len = size - 1, midpoint;
-	int last_val = 0;
+	int last_val = 0, midpoint = 0;
 
 	if (!array || size == 0)
 		return (-1);
 
-	midpoint = floor(sqrt(len));
+	/* What if it's the first index */
+	if (array[last_val] == value)
+		return (last_val);
 
+	midpoint = floor(sqrt((int)size));
+	/* Starting checkpoint */
 	printf("Value checked array[%d] = [%d]\n", last_val, array[last_val]);
-	while (array[(int)midpoint] < value)
+	/* Finding the boundry using jump_search algo */
+	while (array[midpoint] < value && midpoint <= (int)size - 1)
 	{
 		last_val = midpoint;
+		midpoint += floor(sqrt((int)size - 1));
 		printf("Value checked array[%d] = [%d]\n", last_val, array[last_val]);
-		midpoint += floor(sqrt(len));
-		if (array[(int)midpoint] > value || midpoint > len)
-		{
-			printf("Value found between indexes [%d] and [%d]\n",
-					last_val, (int)midpoint);
-			printf("Value checked array[%d] = [%d]\n", last_val, array[last_val]);
-		}
-		if (last_val >= len)
-			return (-1);
 	}
+	/* The boundry we are currently working on */
 	printf("Value found between indexes [%d] and [%d]\n",
-			last_val, (int)midpoint);
+				last_val, (int)midpoint);
+	/* Starting point for the linear search algo */
 	while (array[last_val] < value)
 	{
 		printf("Value checked array[%d] = [%d]\n", last_val, array[last_val]);
 		last_val++;
-		if (last_val >= len)
+		/* Found the index of the value */
+		if (array[last_val] == value)
+		{
+			printf("Value checked array[%d] = [%d]\n", last_val, array[last_val]);
+			return (last_val);
+		}
+		/* No such value in the array */
+		if (last_val > (int)size - 1)
 			return (-1);
-	}
-	if (array[last_val] == value)
-	{
-		printf("Value checked array[%d] = [%d]\n", last_val, array[last_val]);
-		return (last_val);
 	}
 	return (-1);
 }
