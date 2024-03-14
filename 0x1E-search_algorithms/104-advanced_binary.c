@@ -1,4 +1,3 @@
-
 #include "search_algos.h"
 
 /**
@@ -65,12 +64,8 @@ int btr(int *array, int T, int start, int end)
 
 	if (array[m] == T)
 	{
-		Print(array, start, m);
-		if (array[m] == array[m - 1])
-		{
-			Print(array, m - 1, m);
-			m--;
-		}
+		if (m > start  && array[m] == array[m - 1] && T == array[m - 1])
+			return (btr(array, T, start, m));
 
 		return (m);
 	}
