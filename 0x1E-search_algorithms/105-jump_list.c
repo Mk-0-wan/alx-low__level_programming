@@ -40,7 +40,7 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	int low = 0;
 	int high = floor(sqrt(size));
 
-	if (!list)
+	if (!list || !list->next)
 		return (NULL);
 
 	while (getNode(list, Min(high, (int)size - 1))->n < value && high < (int)size)
