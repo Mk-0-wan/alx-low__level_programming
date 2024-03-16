@@ -47,19 +47,19 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	{
 		low = high;
 		high += floor(sqrt(size));
-		printf("Value checked array[%d] = [%d]\n",
+		printf("Value checked at index [%d] = [%d]\n",
 				low, getNode(list, low)->n);
 	}
 
 	if (high <= (int)size - 1)
-		printf("Value checked array[%d] = [%d]\n", high, getNode(list, high)->n);
+		printf("Value checked at index [%d] = [%d]\n", high, getNode(list, high)->n);
 
 	printf("Value found between indexes [%d] and [%d]\n",
 			low, Min(high, (int)size - 1));
 
 	while (low <= (int)size - 1 && getNode(list, low)->n <= value)
 	{
-		printf("Value checked array[%d] = [%d]\n",
+		printf("Value checked at index [%d] = [%d]\n",
 				low, getNode(list, low)->n);
 		if (getNode(list, low)->n == value)
 			return (getNode(list, low));
